@@ -27,23 +27,30 @@ button,input,select{font-family:inherit}
 @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 #loading p{color:var(--gold2);font-size:14px;letter-spacing:3px}
 
-#header{background:linear-gradient(90deg,#3d1000,#6e1c00,#3d1000);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold2);position:sticky;top:0;z-index:100}
+#header{background:linear-gradient(90deg,#3d1000,#6e1c00,#3d1000);padding:8px 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:2px solid var(--gold2);position:sticky;top:0;z-index:100}
 .logo{display:flex;align-items:center;gap:10px}
 .logo-icon{font-size:26px}
 .logo-text{font-size:17px;font-weight:700;letter-spacing:3px;color:var(--gold)}
 .logo-sub{font-size:10px;color:var(--gold2);letter-spacing:2px}
 
-#tabs{display:flex;background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:66px;z-index:99}
-.tab-btn{flex:1;padding:12px 4px;background:transparent;border:none;color:var(--muted);font-size:13px;letter-spacing:1px;border-bottom:3px solid transparent;cursor:pointer;transition:all 0.2s;position:relative}
-.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);background:rgba(140,37,0,0.2)}
-.cart-badge{position:absolute;top:6px;right:6px;background:var(--red2);color:#fff;width:18px;height:18px;border-radius:50%;font-size:10px;font-weight:bold;display:flex;align-items:center;justify-content:center}
+#tabs{display:flex;gap:6px;order:3;flex:0 0 100%}
+.tab-btn{flex:1;padding:10px 4px;background:rgba(80,30,0,0.35);border:1px solid var(--border);border-radius:10px;color:var(--muted);font-size:14px;letter-spacing:1px;cursor:pointer;transition:all 0.2s;position:relative;white-space:nowrap}
+.tab-btn.active{color:var(--gold);border-color:var(--gold2);background:rgba(140,37,0,0.6)}
+#date-display{order:2;margin-left:auto;white-space:nowrap}
+@media(min-width:768px){
+  #header{flex-wrap:nowrap;padding:10px 16px;gap:16px}
+  #tabs{order:0;flex:1;flex-basis:auto;max-width:640px;margin:0 auto}
+  .tab-btn{padding:12px 6px;font-size:15px}
+  #date-display{order:0;margin-left:0}
+}
+.cart-badge{position:absolute;top:-6px;right:-4px;background:var(--red2);color:#fff;width:18px;height:18px;border-radius:50%;font-size:10px;font-weight:bold;display:flex;align-items:center;justify-content:center}
 .page{display:none}.page.active{display:block}
 
 /* REGISTER TOP BAR */
 #register-topbar{display:flex;align-items:center;background:rgba(0,0,0,0.25);border-bottom:1px solid var(--border2)}
 #cat-tabs{display:flex;flex:1;overflow-x:auto;scrollbar-width:none}
 #cat-tabs::-webkit-scrollbar{display:none}
-.cat-tab{flex-shrink:0;padding:13px 20px;background:transparent;border:none;border-bottom:4px solid transparent;color:var(--muted);font-size:18px;font-weight:700;letter-spacing:1px;cursor:pointer;white-space:nowrap;transition:all 0.2s}
+.cat-tab{flex-shrink:0;padding:20px 22px;background:transparent;border:none;border-bottom:4px solid transparent;color:var(--muted);font-size:20px;font-weight:700;letter-spacing:1px;cursor:pointer;white-space:nowrap;transition:all 0.2s}
 .cat-tab.active{color:var(--gold);border-bottom-color:var(--gold);background:rgba(140,37,0,0.25)}
 #settings-page{padding:14px;padding-bottom:40px}
 .col-row{display:flex;gap:8px;margin-bottom:8px}
@@ -83,9 +90,9 @@ button,input,select{font-family:inherit}
 #cart-items-count{font-size:14px;color:var(--gold);font-weight:700}
 #cart-pay-col{flex-shrink:0;min-width:0;display:flex;flex-direction:column}
 #cart-side-footer{padding:12px 14px 20px;flex-shrink:0;border-top:1px solid var(--border2)}
-@media(min-width:1000px){
-  #cart-side{width:auto;flex:1 1 0;min-width:0;flex-direction:row}
-  #cart-items-col{flex:1 1 0;border-right:1px solid var(--border2)}
+@media(min-width:768px) and (orientation:landscape) and (min-height:420px){
+  #cart-side{width:auto;flex:1 1 0;min-width:460px;flex-direction:row}
+  #cart-items-col{flex:1 1 0;min-width:200px;border-right:1px solid var(--border2)}
   #cart-pay-col{flex:1 1 0;min-width:260px;overflow-y:auto}
   #cart-side-body{padding:0 12px}
   #cart-side-body .cart-item{display:grid;grid-template-columns:44px minmax(0,1fr) auto;grid-template-areas:"thumb info rm" "thumb qty sub";gap:4px 8px;align-items:center;padding:10px 0}
@@ -96,8 +103,11 @@ button,input,select{font-family:inherit}
   #cart-side-body .cart-sub{grid-area:sub;min-width:0;text-align:right}
   #cart-side-body .remove-btn{grid-area:rm;justify-self:end}
 }
-@media(min-width:768px){
-  #cart-side{display:flex}
+@media(min-width:768px) and (min-height:420px){
+  #register-page.active{display:flex;flex-direction:column;height:calc(100vh - var(--top-h,115px));height:calc(100dvh - var(--top-h,115px))}
+  #register-topbar{flex-shrink:0}
+  #register-layout{flex:1;min-height:0}
+  #cart-side{display:flex;height:auto;position:static;overflow-y:auto}
   #product-side{padding-bottom:20px}
   #cart-panel{display:none !important}
   .cart-badge{display:none !important}
@@ -254,6 +264,12 @@ button,input,select{font-family:inherit}
 .rec-header{text-align:center;margin-bottom:12px}
 .rec-title{font-size:24px;letter-spacing:4px;font-weight:bold}
 .rec-date{font-size:14px;color:#7c4a20;margin-top:4px}
+.rec-contact{font-size:14px;color:#5c3010;white-space:pre-line;margin-top:6px;line-height:1.5}
+.rec-contact:empty{display:none}
+textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:inherit}
+.rec-preview{background:#fdf8ef;color:#2d1200;border:1px solid #c8a87a;border-radius:10px;padding:12px;text-align:center;margin-top:10px}
+.rec-preview .pv-title{font-size:20px;font-weight:bold;letter-spacing:2px}
+.rec-preview .pv-contact{font-size:13px;color:#5c3010;white-space:pre-line;margin-top:4px;line-height:1.5}
 .rec-divider{border-top:1px dashed #c8a87a;margin:12px 0}
 .rec-item{display:flex;justify-content:space-between;font-size:21px;margin-bottom:10px;align-items:center;gap:10px;line-height:1.35}
 .rec-item img{width:44px;height:44px;border-radius:6px;object-fit:cover;flex-shrink:0}
@@ -270,9 +286,12 @@ button,input,select{font-family:inherit}
 #receipt-modal{justify-content:center}
 #receipt-modal .modal{max-width:560px}
 @media print{
-  body *{visibility:hidden!important}
-  #print-area,#print-area *{visibility:visible!important}
-  #print-area{position:fixed!important;inset:0!important;display:flex!important;align-items:center!important;justify-content:center!important;background:#fff!important}
+  html,body.printing{background:#fff!important;margin:0!important;padding:0!important;min-height:0!important;height:auto!important}
+  body.printing>*:not(#app){display:none!important}
+  body.printing #app{display:block!important}
+  body.printing #app>*:not(#print-area){display:none!important}
+  body.printing #print-area{display:block!important;position:static!important;left:auto!important;background:#fff!important}
+  body.printing #print-content{margin:0 auto!important;color:#000!important}
 }
 #print-area{display:none}
 
@@ -288,6 +307,33 @@ button,input,select{font-family:inherit}
 #confirm-btns{display:flex;gap:10px}
 #confirm-ok{flex:1;padding:13px;background:var(--red);border:none;color:#fff;border-radius:10px;font-size:14px;cursor:pointer}
 #confirm-cancel{flex:1;padding:13px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:10px;font-size:14px;cursor:pointer}
+/* ── タブレット（高さが低い画面：Fire HD 8 など）用のコンパクト表示 ── */
+@media(min-width:768px) and (min-height:420px) and (max-height:700px){
+  #header{padding:6px 14px}
+  .logo-icon{font-size:20px}
+  .logo-text{font-size:15px}
+  .logo-sub{display:none}
+  .tab-btn{padding:9px 4px}
+  .cat-tab{padding:14px 18px;font-size:18px}
+  #cart-side-header{padding:6px 12px;display:flex;align-items:baseline;justify-content:space-between}
+  #cart-side-total{font-size:20px;margin-top:0}
+  #cart-items-header{padding:6px 12px}
+  #cart-side-footer{padding:6px 10px 8px}
+  .pay-label{display:none}
+  .pay-row{margin-bottom:4px}
+  .pay-disp{display:flex;align-items:center;justify-content:space-between;font-size:22px;padding:2px 10px}
+  .pay-disp::before{content:'お預かり金額';font-size:11px;font-weight:400;color:var(--muted);letter-spacing:1px}
+  .change-row{margin-bottom:4px}
+  .change-label{font-size:12px}
+  .change-amount{font-size:18px}
+  .keypad{gap:4px;margin-bottom:5px}
+  .key,.pay-preset{height:32px;font-size:17px;border-radius:8px}
+  .pay-preset{font-size:11px}
+  .checkout-btn{padding:9px;font-size:15px;letter-spacing:4px}
+  .clear-btn,.print-btn{padding:5px;margin-top:4px;font-size:11px}
+  #cart-side-body .cart-item{grid-template-columns:36px minmax(0,1fr) auto;padding:6px 0}
+  .cart-thumb,.cart-thumb-emoji{width:36px;height:36px}
+}
 </style>
 </head>
 <body>
@@ -301,13 +347,13 @@ button,input,select{font-family:inherit}
 
 <div id="header">
   <div class="logo"><div class="logo-icon">⛩️</div><div><div class="logo-text">御守 POS</div><div class="logo-sub">OMAMORI SYSTEM</div></div></div>
+  <div id="tabs">
+    <button class="tab-btn active" onclick="switchTab('register',this)">🛒 レジ<span class="cart-badge" id="cart-badge" style="display:none">0</span></button>
+    <button class="tab-btn" onclick="switchTab('inventory',this)">📦 在庫</button>
+    <button class="tab-btn" onclick="switchTab('sales',this)">📊 売上</button>
+    <button class="tab-btn" onclick="switchTab('settings',this)">⚙ 設定</button>
+  </div>
   <div id="date-display" style="font-size:11px;color:var(--gold2);text-align:right"></div>
-</div>
-<div id="tabs">
-  <button class="tab-btn active" onclick="switchTab('register',this)">🛒 レジ<span class="cart-badge" id="cart-badge" style="display:none">0</span></button>
-  <button class="tab-btn" onclick="switchTab('inventory',this)">📦 在庫</button>
-  <button class="tab-btn" onclick="switchTab('sales',this)">📊 売上</button>
-  <button class="tab-btn" onclick="switchTab('settings',this)">⚙ 設定</button>
 </div>
 
 <!-- REGISTER -->
@@ -378,6 +424,28 @@ button,input,select{font-family:inherit}
       <button class="tool-btn tb-blue" id="fs-btn" onclick="toggleFullscreen()" style="font-size:15px;padding:14px 6px">⛶ 全画面にする</button>
     </div>
     <div class="tool-note">・Android・Windows・iPadで使えます。iPhoneはこのボタンに対応していません<br>・iPhone / iPadは、共有ボタンの「ホーム画面に追加」から開くと、アドレスバーのない全画面で使えます</div>
+  </div>
+  <div class="tool-panel">
+    <div class="tool-panel-title">🧾 レシートの設定</div>
+    <div class="form-group"><label class="form-label">社名（レシートの一番上に表示）</label><input class="form-input" id="rc-name" maxlength="40" placeholder="例：〇〇神社 授与所" oninput="saveReceiptSettings()"></div>
+    <div class="form-group"><label class="form-label">連絡先（住所・電話番号など。改行できます）</label><textarea class="form-input" id="rc-contact" maxlength="200" placeholder="例：東京都〇〇区〇〇1-2-3&#10;TEL 03-0000-0000" oninput="saveReceiptSettings()"></textarea></div>
+    <div class="rec-preview"><div class="pv-title" id="rc-pv-title">⛩️ 御守</div><div class="pv-contact" id="rc-pv-contact"></div></div>
+    <div class="tool-note">入力すると自動で保存され、レシートと印刷に反映されます。社名が空のときは「御守」と表示されます。</div>
+  </div>
+  <div class="tool-panel">
+    <div class="tool-panel-title">🖨️ 印刷の設定</div>
+    <div class="form-group"><label class="form-label">用紙サイズ</label>
+      <select class="form-input" id="rc-paper" onchange="saveReceiptSettings()">
+        <option value="auto">おまかせ（プリンターの設定どおり）</option>
+        <option value="r58">レシートロール 58mm</option>
+        <option value="r80">レシートロール 80mm</option>
+        <option value="a6">A6（はがきサイズ）</option>
+        <option value="a5">A5</option>
+        <option value="a4">A4</option>
+      </select>
+    </div>
+    <div class="tool-btn-row"><button class="tool-btn tb-blue" onclick="testPrint()" style="font-size:15px;padding:14px 6px">🖨️ テスト印刷</button></div>
+    <div class="tool-note">・Windows・AndroidのChrome / Edgeでは、選んだ用紙サイズで印刷されます<br>・iPhone・iPadは、印刷の画面でプリンターと用紙を選びます。ここでは文字の幅だけが用紙に合います<br>・はじめに「テスト印刷」で、見た目と用紙を確認してください</div>
   </div>
   <div class="tool-panel">
     <div class="tool-panel-title">💾 バックアップ / 復元</div>
@@ -556,7 +624,7 @@ button,input,select{font-family:inherit}
 <!-- RECEIPT MODAL -->
 <div class="modal-overlay" id="receipt-modal">
   <div class="modal">
-    <div class="rec-header"><div class="rec-title">⛩️ 御守</div><div class="rec-date" id="r-date"></div></div>
+    <div class="rec-header"><div class="rec-title" id="r-title">⛩️ 御守</div><div class="rec-contact" id="r-contact"></div><div class="rec-date" id="r-date"></div></div>
     <div class="rec-divider"></div>
     <div id="r-items"></div>
     <div class="rec-divider"></div>
@@ -626,6 +694,7 @@ async function init(){
   document.querySelectorAll('.col-btn').forEach(b=>{b.classList.toggle('active',parseInt(b.textContent)===savedCols)});
   document.getElementById('loading').style.display='none';
   document.getElementById('app').style.display='block';
+  updateTopOffsets();
   document.getElementById('cart-panel').style.display='flex';
   document.getElementById('date-display').textContent=new Date().toLocaleDateString('ja-JP',{month:'long',day:'numeric',weekday:'short'});
   renderProducts(); renderCart();
@@ -816,7 +885,33 @@ async function checkout(){
     renderCart();renderProducts();flash('✅ 会計完了！');
   }catch(e){flash('❌ 会計エラー: '+e.message)}
 }
+// ══ レシートの設定（社名・連絡先）══
+const escHtml=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+function getReceiptCfg(){try{return JSON.parse(localStorage.getItem('op_receipt')||'{}')||{}}catch(e){return {}}}
+function receiptTitleText(cfg){return '⛩️ '+((cfg.name||'').trim()||'御守')}
+function updateReceiptPreview(cfg){
+  const t=document.getElementById('rc-pv-title'),c=document.getElementById('rc-pv-contact');
+  if(t)t.textContent=receiptTitleText(cfg);
+  if(c)c.textContent=(cfg.contact||'').trim();
+}
+function saveReceiptSettings(){
+  const pe=document.getElementById('rc-paper');
+  const cfg={name:document.getElementById('rc-name').value,contact:document.getElementById('rc-contact').value,paper:pe?pe.value:'auto'};
+  try{localStorage.setItem('op_receipt',JSON.stringify(cfg))}catch(e){flash('❌ 設定を保存できませんでした')}
+  updateReceiptPreview(cfg);
+}
+function loadReceiptSettings(){
+  const cfg=getReceiptCfg();
+  const n=document.getElementById('rc-name'),c=document.getElementById('rc-contact');
+  if(n)n.value=cfg.name||'';if(c)c.value=cfg.contact||'';
+  const pe=document.getElementById('rc-paper');if(pe)pe.value=PRINT_PAPERS[cfg.paper]?cfg.paper:'auto';
+  updateReceiptPreview(cfg);
+}
+
 function showReceipt(r){
+  const cfg=getReceiptCfg();
+  document.getElementById('r-title').textContent=receiptTitleText(cfg);
+  document.getElementById('r-contact').textContent=(cfg.contact||'').trim();
   document.getElementById('r-date').textContent=r.date;
   document.getElementById('r-items').innerHTML=r.items.map(i=>{
     const photo=getPhoto(i.id);
@@ -828,21 +923,56 @@ function showReceipt(r){
   document.getElementById('r-change').textContent=yen(r.change);
   document.getElementById('receipt-modal').classList.add('open');
 }
-function printReceipt(){
-  if(!lastReceipt)return;
-  const r=lastReceipt;
-  document.getElementById('print-content').innerHTML=`
-    <div style="text-align:center;margin-bottom:12px"><div style="font-size:20px;letter-spacing:4px;font-weight:bold">⛩️ 御守</div><div style="font-size:11px;color:#7c4a20;margin-top:4px">${r.date}</div></div>
-    <hr style="border-top:1px dashed #999;margin:10px 0">
-    ${r.items.map(i=>`<div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:13px"><span>${i.name} ×${i.qty}</span><span>${yen(i.price*i.qty)}</span></div>`).join('')}
-    <hr style="border-top:1px dashed #999;margin:10px 0">
+// ══ 印刷（用紙サイズ対応）══
+const PRINT_PAPERS={
+  auto:{label:'おまかせ（プリンターの設定どおり）'},
+  r58:{label:'レシートロール 58mm',w:58,m:2},
+  r80:{label:'レシートロール 80mm',w:80,m:3},
+  a6:{label:'A6（はがきサイズ）',size:'105mm 148mm',m:6,cw:'93mm'},
+  a5:{label:'A5',size:'148mm 210mm',m:10,cw:'100mm'},
+  a4:{label:'A4',size:'210mm 297mm',m:12,cw:'90mm'}
+};
+function endPrint(){
+  document.body.classList.remove('printing');
+  const area=document.getElementById('print-area');if(area){area.style.cssText='';area.style.display='none'}
+  const st=document.getElementById('print-page-style');if(st)st.textContent='';
+}
+function printReceipt(rcpt){
+  const r=(rcpt&&Array.isArray(rcpt.items))?rcpt:lastReceipt;
+  if(!r)return;
+  const cfg=getReceiptCfg();
+  const paper=PRINT_PAPERS[cfg.paper]||PRINT_PAPERS.auto;
+  const contactHtml=(cfg.contact||'').trim()?`<div style="font-size:12px;white-space:pre-line;margin-top:4px;line-height:1.5">${escHtml(cfg.contact.trim())}</div>`:'';
+  const box=document.getElementById('print-content'),area=document.getElementById('print-area');
+  box.style.width=paper.w?(paper.w-paper.m*2)+'mm':(paper.cw||'280px');
+  box.innerHTML=`
+    <div style="text-align:center;margin-bottom:12px"><div style="font-size:${(paper.w&&paper.w<70)?16:20}px;letter-spacing:${(paper.w&&paper.w<70)?0:2}px;font-weight:bold">${escHtml(receiptTitleText(cfg))}</div>${contactHtml}<div style="font-size:11px;color:#222;margin-top:4px">${escHtml(r.date)}</div></div>
+    <hr style="border-top:1px dashed #666;margin:10px 0">
+    ${r.items.map(i=>`<div style="display:flex;justify-content:space-between;gap:6px;margin-bottom:4px;font-size:13px"><span>${escHtml(i.name)} ×${i.qty}</span><span style="white-space:nowrap">${yen(i.price*i.qty)}</span></div>`).join('')}
+    <hr style="border-top:1px dashed #666;margin:10px 0">
     <div style="display:flex;justify-content:space-between;font-size:17px;font-weight:bold;margin-bottom:5px"><span>合　計</span><span>${yen(r.total)}</span></div>
-    <div style="display:flex;justify-content:space-between;font-size:12px;color:#7c4a20;margin-bottom:3px"><span>お預かり</span><span>${yen(r.payment)}</span></div>
-    <div style="display:flex;justify-content:space-between;font-size:15px;font-weight:bold;color:#8b2500"><span>お釣り</span><span>${yen(r.change)}</span></div>
-    <hr style="border-top:1px dashed #999;margin:10px 0">
-    <div style="text-align:center;font-size:12px;color:#7c4a20">ありがとうございました<br><span style="font-size:10px">どうぞ御守をお大切に</span></div>`;
-  document.getElementById('print-area').style.display='flex';
-  setTimeout(()=>{window.print();document.getElementById('print-area').style.display='none'},100);
+    <div style="display:flex;justify-content:space-between;font-size:12px;color:#222;margin-bottom:3px"><span>お預かり</span><span>${yen(r.payment)}</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:15px;font-weight:bold"><span>お釣り</span><span>${yen(r.change)}</span></div>
+    <hr style="border-top:1px dashed #666;margin:10px 0">
+    <div style="text-align:center;font-size:12px;color:#222">ありがとうございました<br><span style="font-size:10px">どうぞ御守をお大切に</span></div>`;
+  // 画面の外に置いて高さを測り、用紙サイズ（@page）を決める
+  area.style.cssText='display:block;position:absolute;left:-10000px;top:0';
+  let st=document.getElementById('print-page-style');
+  if(!st){st=document.createElement('style');st.id='print-page-style';document.head.appendChild(st)}
+  if(paper.w){
+    const hMm=Math.ceil(box.getBoundingClientRect().height*25.4/96)+paper.m*2+2;
+    st.textContent=`@page{size:${paper.w}mm ${hMm}mm;margin:${paper.m}mm}`;
+  }else if(paper.size){
+    st.textContent=`@page{size:${paper.size};margin:${paper.m}mm}`;
+  }else st.textContent='';
+  document.body.classList.add('printing');
+  window.addEventListener('afterprint',endPrint,{once:true});
+  setTimeout(()=>{try{window.print()}catch(e){endPrint();flash('❌ 印刷できませんでした')}},100);
+  setTimeout(endPrint,30000);
+}
+function testPrint(){
+  printReceipt({id:0,date:new Date().toLocaleString('ja-JP'),total:2200,payment:5000,change:2800,
+    items:[{id:-1,name:'サンプル商品A',price:800,qty:2},{id:-2,name:'サンプル商品B',price:600,qty:1}]});
 }
 
 // ══ Inventory ══
@@ -1316,7 +1446,8 @@ async function saveBackup(){
     const photos=await dbAll('photos');
     const priceHistory=await dbAll('priceHistory');
     const cols=parseInt(localStorage.getItem('op_cols')||'4');
-    const json=JSON.stringify({version:2,date:new Date().toISOString(),products,sales,photos,priceHistory,sortOrder,cols});
+    const receipt=getReceiptCfg();
+    const json=JSON.stringify({version:2,date:new Date().toISOString(),products,sales,photos,priceHistory,sortOrder,cols,receipt});
     const blob=new Blob([json],{type:'application/json'});
     const name='御守POS_バックアップ_'+new Date().toLocaleDateString('ja-JP').replace(/\//g,'-')+'.json';
     const ok=await myConfirm('バックアップを作成しました。\n「OK」を押したあと、表示される画面で\n「ファイルに保存」を選ぶと\n保存場所を指定できます。');
@@ -1335,6 +1466,7 @@ document.getElementById('backup-input').addEventListener('change',async function
     if(data.photos)for(const ph of data.photos) await dbPut('photos',ph);
     if(data.sales)for(const s of data.sales) await dbPut('sales',s);
     if(data.priceHistory)for(const h of data.priceHistory) await dbPut('priceHistory',h);
+    if(data.receipt){localStorage.setItem('op_receipt',JSON.stringify(data.receipt));loadReceiptSettings()}
     if(data.cols){
       localStorage.setItem('op_cols',data.cols);
       document.getElementById('product-grid').style.setProperty('--cols',data.cols);
@@ -1372,11 +1504,24 @@ function updateFsBtn(){
 document.addEventListener('fullscreenchange',updateFsBtn);
 document.addEventListener('webkitfullscreenchange',updateFsBtn);
 updateFsBtn();
+loadReceiptSettings();
 
 // ══ オフライン対応（Service Worker）══
 if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){
   window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(()=>{})});
 }
+
+// ══ 上部バーの高さを測って、レイアウトに反映 ══
+function updateTopOffsets(){
+  const h=document.getElementById('header');
+  if(!h||!h.offsetHeight)return;
+  const root=document.documentElement.style;
+  root.setProperty('--hdr-h',h.offsetHeight+'px');
+  root.setProperty('--top-h',h.offsetHeight+'px');
+}
+window.addEventListener('resize',updateTopOffsets);
+window.addEventListener('orientationchange',updateTopOffsets);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(updateTopOffsets);
 
 // ══ Modal ══
 function closeModal(id){document.getElementById(id).classList.remove('open')}
