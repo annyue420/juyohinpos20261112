@@ -25,36 +25,36 @@ button,input,select{font-family:inherit}
 #loading{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;z-index:9999}
 #loading .load-icon{font-size:48px;animation:spin 2s linear infinite}
 @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-#loading p{color:var(--gold2);font-size:14px;letter-spacing:3px}
+#loading p{color:var(--gold2);font-size:17px;letter-spacing:3px}
 
 #header{background:linear-gradient(90deg,#3d1000,#6e1c00,#3d1000);padding:8px 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:2px solid var(--gold2);position:sticky;top:0;z-index:100}
 .logo{display:flex;align-items:center;gap:10px}
 .logo-icon{font-size:26px}
-.logo-text{font-size:17px;font-weight:700;letter-spacing:3px;color:var(--gold)}
-.logo-sub{font-size:10px;color:var(--gold2);letter-spacing:2px}
+.logo-text{font-size:20px;font-weight:700;letter-spacing:3px;color:var(--gold)}
+.logo-sub{font-size:12px;color:var(--gold2);letter-spacing:2px}
 
 #tabs{display:flex;gap:6px;order:3;flex:0 0 100%}
-.tab-btn{flex:1;padding:10px 4px;background:rgba(80,30,0,0.35);border:1px solid var(--border);border-radius:10px;color:var(--muted);font-size:14px;letter-spacing:1px;cursor:pointer;transition:all 0.2s;position:relative;white-space:nowrap}
+.tab-btn{flex:1;padding:10px 4px;background:rgba(80,30,0,0.35);border:1px solid var(--border);border-radius:10px;color:var(--muted);font-size:17px;letter-spacing:1px;cursor:pointer;transition:all 0.2s;position:relative;white-space:nowrap}
 .tab-btn.active{color:var(--gold);border-color:var(--gold2);background:rgba(140,37,0,0.6)}
 #date-display{order:2;margin-left:auto;white-space:nowrap}
 @media(min-width:768px){
   #header{flex-wrap:nowrap;padding:10px 16px;gap:16px}
   #tabs{order:0;flex:1;flex-basis:auto;max-width:640px;margin:0 auto}
-  .tab-btn{padding:12px 6px;font-size:15px}
+  .tab-btn{padding:12px 6px;font-size:18px}
   #date-display{order:0;margin-left:0}
 }
-.cart-badge{position:absolute;top:-6px;right:-4px;background:var(--red2);color:#fff;width:18px;height:18px;border-radius:50%;font-size:10px;font-weight:bold;display:flex;align-items:center;justify-content:center}
+.cart-badge{position:absolute;top:-6px;right:-4px;background:var(--red2);color:#fff;width:18px;height:18px;border-radius:50%;font-size:12px;font-weight:bold;display:flex;align-items:center;justify-content:center}
 .page{display:none}.page.active{display:block}
 
 /* REGISTER TOP BAR */
 #register-topbar{display:flex;align-items:center;background:rgba(0,0,0,0.25);border-bottom:1px solid var(--border2)}
 #cat-tabs{display:flex;flex:1;overflow-x:auto;scrollbar-width:none}
 #cat-tabs::-webkit-scrollbar{display:none}
-.cat-tab{flex-shrink:0;padding:20px 22px;background:transparent;border:none;border-bottom:4px solid transparent;color:var(--muted);font-size:20px;font-weight:700;letter-spacing:1px;cursor:pointer;white-space:nowrap;transition:all 0.2s}
+.cat-tab{flex-shrink:0;padding:20px 22px;background:transparent;border:none;border-bottom:4px solid transparent;color:var(--muted);font-size:24px;font-weight:700;letter-spacing:1px;cursor:pointer;white-space:nowrap;transition:all 0.2s}
 .cat-tab.active{color:var(--gold);border-bottom-color:var(--gold);background:rgba(140,37,0,0.25)}
 #settings-page{padding:14px;padding-bottom:40px}
 .col-row{display:flex;gap:8px;margin-bottom:8px}
-.col-btn{flex:1;height:52px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:20px;cursor:pointer;transition:all 0.15s}
+.col-btn{flex:1;height:52px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:24px;cursor:pointer;transition:all 0.15s}
 .col-btn.active{background:var(--red);border-color:var(--red2);color:#fff;font-weight:700}
 
 /* PRODUCT GRID */
@@ -64,36 +64,38 @@ button,input,select{font-family:inherit}
 .product-card.out{opacity:0.4;cursor:not-allowed}
 .product-card-img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#2d1200}
 .product-card-no-img{width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,#1e0900,#2d1200);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
-.no-img-emoji{font-size:38px}.no-img-text{font-size:10px;color:var(--border)}
+.no-img-emoji{font-size:38px}.no-img-text{font-size:12px;color:var(--border)}
 .product-card-accent{height:3px}
 .product-card-body{padding:9px 9px 11px}
-.product-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
-.product-desc{font-size:10px;color:var(--muted);margin-bottom:4px}
-.product-price{font-size:15px;font-weight:700;color:var(--gold)}
-.product-stock{font-size:10px;padding:2px 7px;border-radius:20px;display:inline-block;margin-top:4px}
+.product-name{font-size:16px;font-weight:700;color:var(--text);margin-bottom:2px}
+.product-desc{font-size:12px;color:var(--muted);margin-bottom:4px}
+.product-price{font-size:18px;font-weight:700;color:var(--gold)}
+.product-stock{font-size:12px;padding:2px 7px;border-radius:20px;display:inline-block;margin-top:4px}
 .stock-ok{color:var(--green);background:rgba(93,186,107,0.12)}
 .stock-low{color:#f39c12;background:rgba(243,156,18,0.15)}
 .stock-out{color:var(--red2);background:rgba(192,57,43,0.15)}
-.card-qty{position:absolute;top:7px;right:7px;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:bold;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.4)}
+.card-qty{position:absolute;top:7px;right:7px;width:22px;height:22px;border-radius:50%;font-size:13px;font-weight:bold;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.4)}
 
 /* SPLIT LAYOUT */
 #register-layout{display:flex}
 #product-side{flex:1 1 0;min-width:0;overflow-y:auto;padding-bottom:200px}
 #cart-side{display:none;width:320px;flex-shrink:0;border-left:1px solid var(--border);background:rgba(0,0,0,0.35);flex-direction:column;height:calc(100dvh - 115px);position:sticky;top:115px}
 #cart-side-header{padding:14px 16px 10px;border-bottom:1px solid var(--border2);flex-shrink:0}
-#cart-side-header h3{font-size:14px;color:var(--gold2);letter-spacing:3px}
-#cart-side-total{font-size:22px;font-weight:700;color:var(--gold);margin-top:4px}
+#cart-side-header h3{font-size:17px;color:var(--gold2);letter-spacing:3px}
+#cart-side-total{font-size:26px;font-weight:700;color:var(--gold);margin-top:4px}
 #cart-side-body{flex:1;overflow-y:auto;padding:0 14px}
 #cart-items-col{flex:1;min-height:0;min-width:0;display:flex;flex-direction:column}
 #cart-items-header{padding:14px 16px 10px;border-bottom:1px solid var(--border2);flex-shrink:0;display:flex;align-items:baseline;justify-content:space-between;gap:8px}
-#cart-items-header h3{font-size:14px;color:var(--gold2);letter-spacing:3px}
-#cart-items-count{font-size:14px;color:var(--gold);font-weight:700}
+#cart-items-header h3{font-size:17px;color:var(--gold2);letter-spacing:3px}
+#cart-items-count{font-size:17px;color:var(--gold);font-weight:700}
 #cart-pay-col{flex-shrink:0;min-width:0;display:flex;flex-direction:column}
 #cart-side-footer{padding:12px 14px 20px;flex-shrink:0;border-top:1px solid var(--border2)}
 @media(min-width:768px) and (orientation:landscape) and (min-height:420px){
   #cart-side{width:auto;flex:1 1 0;min-width:460px;flex-direction:row}
   #cart-items-col{flex:1 1 0;min-width:200px;border-right:1px solid var(--border2)}
   #cart-pay-col{flex:1 1 0;min-width:260px;overflow-y:auto}
+  #cart-side-header{display:flex;align-items:baseline;justify-content:space-between;padding:10px 14px 8px}
+  #cart-side-total{margin-top:0}
   #cart-side-body{padding:0 12px}
   #cart-side-body .cart-item{display:grid;grid-template-columns:44px minmax(0,1fr) auto;grid-template-areas:"thumb info rm" "thumb qty sub";gap:4px 8px;align-items:center;padding:10px 0}
   #cart-side-body .cart-item>:nth-child(1){grid-area:thumb;align-self:start}
@@ -114,68 +116,70 @@ button,input,select{font-family:inherit}
 }
 
 /* BOTTOM CART */
-#cart-panel{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(180deg,rgba(18,7,0,0.97),#150800);border-top:1px solid var(--border);border-radius:20px 20px 0 0;z-index:200;max-height:85vh;display:flex;flex-direction:column;transition:transform 0.3s cubic-bezier(0.32,0.72,0,1)}
+#cart-panel{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(180deg,rgba(18,7,0,0.97),#150800);border-top:1px solid var(--border);border-radius:20px 20px 0 0;z-index:200;max-height:85vh;overflow-y:auto;display:flex;flex-direction:column;transition:transform 0.3s cubic-bezier(0.32,0.72,0,1)}
 #cart-panel.collapsed{transform:translateY(calc(100% - 62px))}
 #cart-toggle{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;border-bottom:1px solid var(--border2);flex-shrink:0}
-.cart-label{font-size:14px;color:var(--gold2);letter-spacing:1px}
-.cart-total-big{font-size:20px;font-weight:700;color:var(--gold)}
-.cart-open-pill{padding:8px 14px;border-radius:20px;background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:1px}
-#cart-body{overflow-y:auto;flex:1;padding:0 16px}
+.cart-label{font-size:17px;color:var(--gold2);letter-spacing:1px}
+.cart-total-big{font-size:24px;font-weight:700;color:var(--gold)}
+.cart-open-pill{padding:8px 14px;border-radius:20px;background:var(--red);color:#fff;font-size:16px;font-weight:700;letter-spacing:1px}
+#cart-body{overflow-y:auto;flex:1;min-height:80px;padding:0 16px}
 .cart-item{display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--border2)}
 .cart-thumb{width:42px;height:42px;border-radius:8px;object-fit:cover;background:#2d1200;flex-shrink:0}
 .cart-thumb-emoji{width:42px;height:42px;border-radius:8px;background:#2d1200;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
 .cart-info{flex:1;min-width:0}
-.cart-name{font-size:13px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cart-unit{font-size:11px;color:var(--muted);margin-top:2px}
+.cart-name{font-size:16px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cart-unit{font-size:13px;color:var(--muted);margin-top:2px}
 .qty-ctrl{display:flex;align-items:center;gap:5px;flex-shrink:0}
-.qty-btn{width:27px;height:27px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.qty-num{font-size:14px;min-width:18px;text-align:center}
-.cart-sub{font-size:13px;color:var(--gold);min-width:54px;text-align:right;flex-shrink:0}
-.remove-btn{background:transparent;border:none;color:var(--red2);font-size:17px;cursor:pointer;padding:4px;flex-shrink:0}
+.qty-btn{width:27px;height:27px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.qty-num{font-size:17px;min-width:18px;text-align:center}
+.cart-sub{font-size:16px;color:var(--gold);min-width:54px;text-align:right;flex-shrink:0}
+.remove-btn{background:transparent;border:none;color:var(--red2);font-size:20px;cursor:pointer;padding:4px;flex-shrink:0}
 #cart-footer{padding:12px 16px 28px;flex-shrink:0}
-.pay-label{font-size:12px;color:var(--gold2);letter-spacing:2px;margin-bottom:4px}
+.pay-label{font-size:14px;color:var(--gold2);letter-spacing:2px;margin-bottom:4px}
 .pay-row{display:flex;gap:6px;margin-bottom:6px}
-.pay-disp{flex:1;padding:6px 14px;background:rgba(80,30,0,0.35);border:1px solid var(--border);border-radius:10px;font-size:26px;font-weight:700;color:var(--gold);text-align:right}
+.pay-disp{flex:1;padding:6px 14px;background:rgba(80,30,0,0.35);border:1px solid var(--border);border-radius:10px;font-size:31px;font-weight:700;color:var(--gold);text-align:right}
 .pay-disp.dim{color:var(--border)}
-.key.clear-key{color:var(--red2);border-color:var(--red2);font-weight:700;font-size:20px}
-.keypad{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px}
-.key,.pay-preset{height:46px;border-radius:10px;border:1px solid var(--border);background:rgba(80,30,0,0.35);color:var(--text);font-size:20px;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.key.clear-key{color:var(--red2);border-color:var(--red2);font-weight:700;font-size:24px}
+.quick{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:6px}
+.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px}
+.key,.pay-preset{height:clamp(38px,6vh,52px);border-radius:10px;border:1px solid var(--border);background:rgba(80,30,0,0.35);color:var(--text);font-size:24px;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none}
 .key:active{background:var(--red)}
-.pay-preset{font-size:13px;color:var(--gold)}
+.pay-preset{font-size:19px;color:var(--gold)}
 .pay-preset.on{background:var(--red);border-color:var(--red2);color:#fff}
-@media(max-height:700px){.key,.pay-preset{height:40px}}
 .change-row{display:flex;justify-content:space-between;align-items:center;padding:2px 0;margin-bottom:6px}
-.change-label{font-size:14px;color:var(--gold2)}
-.change-amount{font-size:22px;font-weight:700}
+.change-label{font-size:17px;color:var(--gold2)}
+.change-amount{font-size:26px;font-weight:700}
 .ok{color:var(--green)}.ng{color:var(--red2)}
-.checkout-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border:none;border-radius:12px;font-size:17px;font-weight:700;letter-spacing:5px;cursor:pointer}
+.checkout-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border:none;border-radius:12px;font-size:20px;font-weight:700;letter-spacing:5px;cursor:pointer}
 .checkout-btn:disabled{background:#3d2010;color:var(--border);cursor:not-allowed}
-.clear-btn{width:100%;padding:10px;margin-top:7px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:10px;font-size:12px;letter-spacing:2px;cursor:pointer}
+.sub-btns{display:flex;gap:6px}
+.sub-btns button{flex:1;white-space:nowrap}
+.clear-btn{width:100%;padding:10px;margin-top:7px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:10px;font-size:14px;letter-spacing:2px;cursor:pointer}
 .print-btn{width:100%;padding:10px;margin-top:7px;background:rgba(41,128,185,0.18);border:1px solid #2980b9;color:#7ec8e3;border-radius:10px;font-size:12px;letter-spacing:2px;cursor:pointer}
 
 /* INVENTORY */
 #inventory-page{padding:14px;padding-bottom:40px}
 .summary-cards{display:flex;gap:8px;margin-bottom:14px}
 .summary-card{flex:1;background:var(--panel);border:1px solid var(--border2);border-radius:12px;padding:10px 6px;text-align:center}
-.sc-icon{font-size:18px}.sc-val{font-size:16px;font-weight:700;color:var(--gold);margin:2px 0}.sc-label{font-size:10px;color:var(--muted)}
-.inv-search{width:100%;padding:10px 14px;background:rgba(80,30,0,0.35);border:1px solid var(--border);color:var(--text);border-radius:10px;font-size:14px;margin-bottom:8px}
-#add-btn{width:100%;padding:12px;margin-bottom:10px;background:rgba(45,90,27,0.35);border:1px solid #2d5a1b;color:#5dba6b;border-radius:10px;font-size:14px;letter-spacing:2px;cursor:pointer}
-.sort-hint{font-size:10px;color:var(--border);text-align:center;margin-bottom:8px;letter-spacing:1px}
+.sc-icon{font-size:22px}.sc-val{font-size:19px;font-weight:700;color:var(--gold);margin:2px 0}.sc-label{font-size:12px;color:var(--muted)}
+.inv-search{width:100%;padding:10px 14px;background:rgba(80,30,0,0.35);border:1px solid var(--border);color:var(--text);border-radius:10px;font-size:17px;margin-bottom:8px}
+#add-btn{width:100%;padding:12px;margin-bottom:10px;background:rgba(45,90,27,0.35);border:1px solid #2d5a1b;color:#5dba6b;border-radius:10px;font-size:17px;letter-spacing:2px;cursor:pointer}
+.sort-hint{font-size:12px;color:var(--border);text-align:center;margin-bottom:8px;letter-spacing:1px}
 .tool-panel{background:var(--panel);border:1px solid var(--border2);border-radius:14px;padding:14px;margin-bottom:10px}
-.tool-panel-title{font-size:11px;color:var(--gold2);letter-spacing:2px;margin-bottom:10px}
+.tool-panel-title{font-size:13px;color:var(--gold2);letter-spacing:2px;margin-bottom:10px}
 .tool-btn-row{display:flex;gap:8px;margin-bottom:6px}
-.tool-btn{flex:1;padding:10px 6px;border-radius:9px;border:none;font-size:12px;letter-spacing:1px;cursor:pointer}
+.tool-btn{flex:1;padding:10px 6px;border-radius:9px;border:none;font-size:14px;letter-spacing:1px;cursor:pointer}
 .tb-blue{background:rgba(41,128,185,0.22);border:1px solid #2980b9;color:#7ec8e3}
 .tb-green{background:rgba(39,174,96,0.18);border:1px solid #27ae60;color:#5dba6b}
 .tb-purple{background:rgba(142,68,173,0.22);border:1px solid #8e44ad;color:#c39bd3}
 .tb-orange{background:rgba(230,126,34,0.18);border:1px solid #e67e22;color:#f0a56e}
 .tb-gold{background:rgba(243,156,18,0.18);border:1px solid #f39c12;color:#f5d48e}
-.tool-note{font-size:10px;color:var(--border);line-height:1.6;margin-top:5px}
+.tool-note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:5px}
 .inv-item{background:var(--panel);border:1px solid var(--border2);border-radius:14px;margin-bottom:10px;overflow:hidden;display:flex;align-items:stretch}
 .sort-mode .inv-item{touch-action:none}
 .inv-item.dragging{opacity:0.4;border:2px dashed var(--gold2)!important}
 .inv-item.drag-over{border:2px solid var(--gold)!important;background:rgba(245,212,142,0.06)!important}
-.drag-handle{width:30px;display:none;align-items:center;justify-content:center;color:var(--gold2);font-size:17px;cursor:grab;flex-shrink:0;user-select:none}
+.drag-handle{width:30px;display:none;align-items:center;justify-content:center;color:var(--gold2);font-size:20px;cursor:grab;flex-shrink:0;user-select:none}
 .sort-mode .drag-handle{display:flex}
 .drag-handle:active{cursor:grabbing}
 .sort-mode-active{background:rgba(140,37,0,0.3)!important;border-color:var(--red2)!important;color:var(--gold)!important}
@@ -186,78 +190,78 @@ button,input,select{font-family:inherit}
 .photo-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s;font-size:22px}
 .inv-img-wrap:active .photo-overlay{opacity:1}
 .inv-content{flex:1;padding:11px 11px 9px;min-width:0}
-.inv-name{font-size:14px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px}
-.price-hist-btn{font-size:10px;color:#7ec8e3;background:transparent;border:1px solid #2980b940;border-radius:4px;padding:2px 6px;cursor:pointer;flex-shrink:0}
-.inv-meta{font-size:11px;color:var(--muted);margin:2px 0 4px}
-.inv-price-row{font-size:12px;color:var(--gold2)}
+.inv-name{font-size:17px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px}
+.price-hist-btn{font-size:12px;color:#7ec8e3;background:transparent;border:1px solid #2980b940;border-radius:4px;padding:2px 6px;cursor:pointer;flex-shrink:0}
+.inv-meta{font-size:13px;color:var(--muted);margin:2px 0 4px}
+.inv-price-row{font-size:14px;color:var(--gold2)}
 .inv-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
 .inv-stock-ctrl{display:flex;align-items:center;gap:6px}
-.inv-s-btn{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--text);font-size:15px;cursor:pointer}
-.inv-stock-num{font-size:18px;font-weight:700;min-width:24px;text-align:center}
+.inv-s-btn{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--text);font-size:18px;cursor:pointer}
+.inv-stock-num{font-size:22px;font-weight:700;min-width:24px;text-align:center}
 .inv-actions{display:flex;gap:6px}
-.edit-btn{padding:5px 10px;border:1px solid var(--border);background:transparent;color:var(--gold2);border-radius:6px;font-size:11px;cursor:pointer}
-.del-btn{padding:5px 10px;border:1px solid var(--red2);background:transparent;color:var(--red2);border-radius:6px;font-size:11px;cursor:pointer}
+.edit-btn{padding:5px 10px;border:1px solid var(--border);background:transparent;color:var(--gold2);border-radius:6px;font-size:13px;cursor:pointer}
+.del-btn{padding:5px 10px;border:1px solid var(--red2);background:transparent;color:var(--red2);border-radius:6px;font-size:13px;cursor:pointer}
 
 /* SALES */
 #sales-page{padding:14px;padding-bottom:40px}
 .sales-filter-row{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
-.filter-btn{padding:7px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:12px;cursor:pointer}
+.filter-btn{padding:7px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:14px;cursor:pointer}
 .filter-btn.active{background:var(--red);border-color:var(--red2);color:#fff}
 .custom-dates{display:flex;gap:6px;margin-bottom:10px}
-.date-input{flex:1;padding:8px 10px;background:rgba(80,30,0,0.35);border:1px solid var(--border);color:var(--text);border-radius:8px;font-size:13px}
+.date-input{flex:1;padding:8px 10px;background:rgba(80,30,0,0.35);border:1px solid var(--border);color:var(--text);border-radius:8px;font-size:16px}
 .graph-card,.ranking-card{background:var(--panel);border:1px solid var(--border2);border-radius:14px;padding:14px;margin-bottom:12px}
-.graph-title,.ranking-title{font-size:12px;color:var(--gold2);letter-spacing:2px;margin-bottom:10px}
+.graph-title,.ranking-title{font-size:14px;color:var(--gold2);letter-spacing:2px;margin-bottom:10px}
 .graph-tabs{display:flex;gap:6px;margin-bottom:10px}
-.graph-tab{padding:6px 12px;border-radius:16px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:11px;cursor:pointer}
+.graph-tab{padding:6px 12px;border-radius:16px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:13px;cursor:pointer}
 .graph-tab.active{background:rgba(140,37,0,0.4);border-color:var(--red);color:var(--gold)}
 .bar-chart{display:flex;align-items:flex-end;gap:4px;height:110px;padding-bottom:18px;position:relative;overflow-x:auto}
 .bar-chart::after{content:'';position:absolute;bottom:18px;left:0;right:0;height:1px;background:var(--border2)}
 .bar-col{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:28px;flex:1;position:relative}
 .bar-fill{width:100%;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--gold),var(--red));min-height:2px}
 .bar-fill.zero{background:var(--border2)}
-.bar-label{font-size:8px;color:var(--muted);white-space:nowrap;position:absolute;bottom:0}
-.bar-val{font-size:8px;color:var(--gold2)}
+.bar-label{font-size:10px;color:var(--muted);white-space:nowrap;position:absolute;bottom:0}
+.bar-val{font-size:10px;color:var(--gold2)}
 .rank-item{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border2)}
 .rank-item:last-child{border-bottom:none}
-.rank-num{font-size:17px;font-weight:700;min-width:26px;text-align:center}
+.rank-num{font-size:20px;font-weight:700;min-width:26px;text-align:center}
 .rank-num.r1{color:#f5d48e}.rank-num.r2{color:#c8a87a}.rank-num.r3{color:#a07840}
 .rank-img{width:34px;height:34px;border-radius:7px;object-fit:cover;background:#2d1200;flex-shrink:0}
 .rank-emoji{width:34px;height:34px;border-radius:7px;background:#2d1200;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
 .rank-info{flex:1;min-width:0}
-.rank-name{font-size:13px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rank-sub{font-size:10px;color:var(--muted);margin-top:1px}
+.rank-name{font-size:16px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rank-sub{font-size:12px;color:var(--muted);margin-top:1px}
 .rank-bar-wrap{width:70px;height:5px;background:rgba(80,30,0,0.35);border-radius:3px;margin-top:3px}
 .rank-bar{height:5px;border-radius:3px;background:var(--gold)}
-.rank-amount{font-size:13px;font-weight:700;color:var(--gold);min-width:58px;text-align:right;flex-shrink:0}
+.rank-amount{font-size:16px;font-weight:700;color:var(--gold);min-width:58px;text-align:right;flex-shrink:0}
 .sale-card{background:var(--panel);border:1px solid var(--border2);border-radius:12px;padding:12px;margin-bottom:8px}
 .sale-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
-.sale-date{font-size:11px;color:var(--muted)}.sale-total{font-size:17px;font-weight:700;color:var(--gold)}
+.sale-date{font-size:13px;color:var(--muted)}.sale-total{font-size:20px;font-weight:700;color:var(--gold)}
 .sale-items{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:5px;align-items:center}
 .sale-item-img{width:30px;height:30px;border-radius:5px;object-fit:cover}
-.sale-tag{font-size:11px;padding:3px 8px;background:rgba(80,30,0,0.35);border-radius:20px;color:var(--gold2)}
-.sale-pay{font-size:11px;color:var(--border)}
+.sale-tag{font-size:13px;padding:3px 8px;background:rgba(80,30,0,0.35);border-radius:20px;color:var(--gold2)}
+.sale-pay{font-size:13px;color:var(--border)}
 
 /* MODALS */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:500;align-items:flex-end}
 .modal-overlay.open{display:flex}
 .modal{background:#1a0a00;border:1px solid var(--red);border-radius:20px 20px 0 0;padding:22px 18px 36px;width:100%;max-height:90vh;overflow-y:auto}
-.modal-title{font-size:15px;color:var(--gold);letter-spacing:3px;margin-bottom:16px}
+.modal-title{font-size:18px;color:var(--gold);letter-spacing:3px;margin-bottom:16px}
 .form-group{margin-bottom:12px}
-.form-label{font-size:12px;color:var(--muted);margin-bottom:4px;display:block}
-.form-input{width:100%;padding:10px 12px;background:rgba(80,30,0,0.35);border:1px solid var(--border);color:var(--text);border-radius:10px;font-size:15px}
+.form-label{font-size:14px;color:var(--muted);margin-bottom:4px;display:block}
+.form-input{width:100%;padding:10px 12px;background:rgba(80,30,0,0.35);border:1px solid var(--border);color:var(--text);border-radius:10px;font-size:18px}
 .modal-btns{display:flex;gap:10px;margin-top:16px}
-.btn-save{flex:1;padding:13px;background:var(--red);border:none;color:#fff;border-radius:10px;font-size:14px;letter-spacing:3px;cursor:pointer}
-.btn-cancel{flex:1;padding:13px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:10px;font-size:14px;cursor:pointer}
+.btn-save{flex:1;padding:13px;background:var(--red);border:none;color:#fff;border-radius:10px;font-size:17px;letter-spacing:3px;cursor:pointer}
+.btn-cancel{flex:1;padding:13px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:10px;font-size:17px;cursor:pointer}
 .photo-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
 .photo-preview{width:78px;height:78px;border-radius:10px;background:#2d1200;border:1px solid var(--border);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:26px}
 .photo-preview img{width:100%;height:100%;object-fit:cover}
 .photo-btns{flex:1;display:flex;flex-direction:column;gap:6px}
-.photo-btn{width:100%;padding:9px;background:rgba(80,30,0,0.35);border:1px solid var(--border);color:var(--text);border-radius:8px;font-size:13px;cursor:pointer}
+.photo-btn{width:100%;padding:9px;background:rgba(80,30,0,0.35);border:1px solid var(--border);color:var(--text);border-radius:8px;font-size:16px;cursor:pointer}
 /* 価格履歴モーダル */
-.price-hist-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border2);font-size:13px}
-.price-hist-old{color:var(--muted);text-decoration:line-through;font-size:12px}
+.price-hist-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border2);font-size:16px}
+.price-hist-old{color:var(--muted);text-decoration:line-through;font-size:14px}
 .price-hist-new{color:var(--gold);font-weight:700}
-.price-hist-date{font-size:10px;color:var(--border)}
+.price-hist-date{font-size:12px;color:var(--border)}
 
 /* RECEIPT */
 #receipt-modal .modal{background:#fdf8ef;color:#2d1200;font-family:'Courier New',monospace;border-color:#c8a87a}
@@ -295,7 +299,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
 }
 #print-area{display:none}
 
-#flash{position:fixed;top:76px;left:50%;transform:translateX(-50%);background:#2d5a1b;color:#fff;padding:9px 22px;border-radius:30px;font-size:13px;font-weight:bold;z-index:9999;opacity:0;transition:opacity 0.2s;pointer-events:none;white-space:nowrap}
+#flash{position:fixed;top:76px;left:50%;transform:translateX(-50%);background:#2d5a1b;color:#fff;padding:9px 22px;border-radius:30px;font-size:16px;font-weight:bold;z-index:9999;opacity:0;transition:opacity 0.2s;pointer-events:none;white-space:nowrap}
 #flash.show{opacity:1}
 #file-input,#csv-input,#backup-input{display:none}
 
@@ -303,37 +307,40 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
 #confirm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:2000;align-items:center;justify-content:center;padding:20px}
 #confirm-overlay.open{display:flex}
 #confirm-box{background:#1a0a00;border:1px solid var(--red);border-radius:16px;padding:24px 20px;width:100%;max-width:340px}
-#confirm-msg{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:20px;white-space:pre-wrap}
+#confirm-msg{font-size:17px;color:var(--text);line-height:1.7;margin-bottom:20px;white-space:pre-wrap}
 #confirm-btns{display:flex;gap:10px}
-#confirm-ok{flex:1;padding:13px;background:var(--red);border:none;color:#fff;border-radius:10px;font-size:14px;cursor:pointer}
-#confirm-cancel{flex:1;padding:13px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:10px;font-size:14px;cursor:pointer}
+#confirm-ok{flex:1;padding:13px;background:var(--red);border:none;color:#fff;border-radius:10px;font-size:17px;cursor:pointer}
+#confirm-cancel{flex:1;padding:13px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:10px;font-size:17px;cursor:pointer}
 /* ── タブレット（高さが低い画面：Fire HD 8 など）用のコンパクト表示 ── */
 @media(min-width:768px) and (min-height:420px) and (max-height:700px){
   #header{padding:6px 14px}
   .logo-icon{font-size:20px}
-  .logo-text{font-size:15px}
+  .logo-text{font-size:18px}
   .logo-sub{display:none}
   .tab-btn{padding:9px 4px}
-  .cat-tab{padding:14px 18px;font-size:18px}
+  .cat-tab{padding:14px 18px;font-size:22px}
   #cart-side-header{padding:6px 12px;display:flex;align-items:baseline;justify-content:space-between}
-  #cart-side-total{font-size:20px;margin-top:0}
+  #cart-side-total{font-size:24px;margin-top:0}
   #cart-items-header{padding:6px 12px}
   #cart-side-footer{padding:6px 10px 8px}
   .pay-label{display:none}
   .pay-row{margin-bottom:4px}
-  .pay-disp{display:flex;align-items:center;justify-content:space-between;font-size:22px;padding:2px 10px}
-  .pay-disp::before{content:'お預かり金額';font-size:11px;font-weight:400;color:var(--muted);letter-spacing:1px}
+  .pay-disp{display:flex;align-items:center;justify-content:space-between;font-size:26px;padding:2px 10px}
+  .pay-disp::before{content:'お預かり金額';font-size:13px;font-weight:400;color:var(--muted);letter-spacing:1px}
   .change-row{margin-bottom:4px}
-  .change-label{font-size:12px}
-  .change-amount{font-size:18px}
+  .change-label{font-size:14px}
+  .change-amount{font-size:22px}
+  .quick{gap:4px;margin-bottom:4px}
   .keypad{gap:4px;margin-bottom:5px}
-  .key,.pay-preset{height:32px;font-size:17px;border-radius:8px}
-  .pay-preset{font-size:11px}
-  .checkout-btn{padding:9px;font-size:15px;letter-spacing:4px}
+  .key,.pay-preset{height:clamp(30px,6vh,40px);font-size:20px;border-radius:8px}
+  .pay-preset{font-size:17px}
+  .checkout-btn{padding:9px;font-size:18px;letter-spacing:4px}
   .clear-btn,.print-btn{padding:5px;margin-top:4px;font-size:11px}
   #cart-side-body .cart-item{grid-template-columns:36px minmax(0,1fr) auto;padding:6px 0}
   .cart-thumb,.cart-thumb-emoji{width:36px;height:36px}
 }
+
+/* font-scale:1.2 */
 </style>
 </head>
 <body>
@@ -353,7 +360,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
     <button class="tab-btn" onclick="switchTab('sales',this)">📊 売上</button>
     <button class="tab-btn" onclick="switchTab('settings',this)">⚙ 設定</button>
   </div>
-  <div id="date-display" style="font-size:11px;color:var(--gold2);text-align:right"></div>
+  <div id="date-display" style="font-size:13px;color:var(--gold2);text-align:right"></div>
 </div>
 
 <!-- REGISTER -->
@@ -383,10 +390,10 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
     <div class="pay-row"><div class="pay-disp dim" id="pay-disp-side">¥0</div></div>
     <input type="hidden" id="pay-side">
     <div class="change-row" id="cr-side"><span class="change-label">お釣り</span><span class="change-amount" id="cd-side">—</span></div>
-    <div class="keypad"><button class="key" onclick="keyPay('7')">7</button><button class="key" onclick="keyPay('8')">8</button><button class="key" onclick="keyPay('9')">9</button><button class="pay-preset" onclick="setPayment(1000)">¥1,000</button><button class="key" onclick="keyPay('4')">4</button><button class="key" onclick="keyPay('5')">5</button><button class="key" onclick="keyPay('6')">6</button><button class="pay-preset" onclick="setPayment(5000)">¥5,000</button><button class="key" onclick="keyPay('1')">1</button><button class="key" onclick="keyPay('2')">2</button><button class="key" onclick="keyPay('3')">3</button><button class="pay-preset" onclick="setPayment(10000)">¥10,000</button><button class="key" onclick="keyPay('0')">0</button><button class="key" onclick="keyPay('00')">00</button><button class="key" onclick="keyPay('B')">⌫</button><button class="key clear-key" onclick="keyPay('C')">C</button></div>
+        <div class="quick"><button class="pay-preset" onclick="setPayment(1000)">¥1,000</button><button class="pay-preset" onclick="setPayment(5000)">¥5,000</button><button class="pay-preset" onclick="setPayment(10000)">¥10,000</button><button class="key clear-key" onclick="keyPay('C')">C</button></div>
+    <div class="keypad"><button class="key" onclick="keyPay('7')">7</button><button class="key" onclick="keyPay('8')">8</button><button class="key" onclick="keyPay('9')">9</button><button class="key" onclick="keyPay('4')">4</button><button class="key" onclick="keyPay('5')">5</button><button class="key" onclick="keyPay('6')">6</button><button class="key" onclick="keyPay('1')">1</button><button class="key" onclick="keyPay('2')">2</button><button class="key" onclick="keyPay('3')">3</button><button class="key" onclick="keyPay('0')">0</button><button class="key" onclick="keyPay('00')">00</button><button class="key" onclick="keyPay('B')">⌫</button></div>
         <button class="checkout-btn" id="co-side" onclick="checkout()" disabled>会　計</button>
-        <button class="print-btn" id="print-side" onclick="printReceipt()" style="display:none">🖨️ レシート印刷</button>
-        <button class="clear-btn" onclick="clearCart()">カートをクリア</button>
+        <div class="sub-btns"><button class="print-btn" id="print-side" onclick="printReceipt()" style="display:none">🖨️ 印刷</button><button class="clear-btn" onclick="clearCart()">✕ クリア</button></div>
       </div>
       </div>
     </div>
@@ -399,7 +406,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
   <input class="inv-search" id="inv-search" placeholder="🔍 商品名で検索" oninput="renderInventory()">
   <button id="add-btn" onclick="openAddModal()">＋ 新規商品を追加</button>
   <div style="display:flex;gap:8px;margin-bottom:10px">
-    <button id="sort-mode-btn" onclick="toggleSortMode()" style="flex:1;padding:10px;background:rgba(80,30,0,0.4);border:1px solid var(--border);color:var(--muted);border-radius:10px;font-size:13px;letter-spacing:1px;cursor:pointer">☰ 並び替えモード</button>
+    <button id="sort-mode-btn" onclick="toggleSortMode()" style="flex:1;padding:10px;background:rgba(80,30,0,0.4);border:1px solid var(--border);color:var(--muted);border-radius:10px;font-size:16px;letter-spacing:1px;cursor:pointer">☰ 並び替えモード</button>
   </div>
   <div class="sort-hint" id="sort-hint">☰ 左端をドラッグで並び替え</div>
   <div id="inv-list"></div>
@@ -421,7 +428,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
   <div class="tool-panel">
     <div class="tool-panel-title">🖥 画面表示</div>
     <div class="tool-btn-row">
-      <button class="tool-btn tb-blue" id="fs-btn" onclick="toggleFullscreen()" style="font-size:15px;padding:14px 6px">⛶ 全画面にする</button>
+      <button class="tool-btn tb-blue" id="fs-btn" onclick="toggleFullscreen()" style="font-size:18px;padding:14px 6px">⛶ 全画面にする</button>
     </div>
     <div class="tool-note">・Android・Windows・iPadで使えます。iPhoneはこのボタンに対応していません<br>・iPhone / iPadは、共有ボタンの「ホーム画面に追加」から開くと、アドレスバーのない全画面で使えます</div>
   </div>
@@ -444,7 +451,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
         <option value="a4">A4</option>
       </select>
     </div>
-    <div class="tool-btn-row"><button class="tool-btn tb-blue" onclick="testPrint()" style="font-size:15px;padding:14px 6px">🖨️ テスト印刷</button></div>
+    <div class="tool-btn-row"><button class="tool-btn tb-blue" onclick="testPrint()" style="font-size:18px;padding:14px 6px">🖨️ テスト印刷</button></div>
     <div class="tool-note">・Windows・AndroidのChrome / Edgeでは、選んだ用紙サイズで印刷されます<br>・iPhone・iPadは、印刷の画面でプリンターと用紙を選びます。ここでは文字の幅だけが用紙に合います<br>・はじめに「テスト印刷」で、見た目と用紙を確認してください</div>
   </div>
   <div class="tool-panel">
@@ -469,7 +476,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
   <div class="tool-panel">
     <div class="tool-panel-title">📖 使い方</div>
     <div class="tool-btn-row">
-      <a class="tool-btn tb-gold" href="manual.html" style="font-size:15px;padding:14px 6px;text-align:center;text-decoration:none">説明書を開く</a>
+      <a class="tool-btn tb-gold" href="manual.html" style="font-size:18px;padding:14px 6px;text-align:center;text-decoration:none">説明書を開く</a>
     </div>
     <div class="tool-note">操作方法、ホーム画面への追加、バックアップのしかたを説明しています</div>
   </div>
@@ -506,13 +513,13 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
 
   <!-- 管理パネル（普段は隠す） -->
   <div style="margin-top:20px;text-align:center">
-    <button id="mgmt-toggle" onclick="toggleMgmt()" style="background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:20px;padding:6px 16px;font-size:11px;cursor:pointer;letter-spacing:1px">⚙ 管理</button>
+    <button id="mgmt-toggle" onclick="toggleMgmt()" style="background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:20px;padding:6px 16px;font-size:13px;cursor:pointer;letter-spacing:1px">⚙ 管理</button>
   </div>
   <div id="mgmt-panel" style="display:none;margin-top:10px">
     <div class="tool-panel" style="border-color:#c0392b40">
       <div class="tool-panel-title" style="color:#e74c3c">⚠️ 売上履歴の全削除</div>
       <div class="tool-note" style="margin-bottom:10px">全期間の売上記録を削除します。在庫数は変更されません。<br>この操作は取り消せません。</div>
-      <button id="reset-all-btn" style="width:100%;padding:14px;background:rgba(192,57,43,0.15);border:2px solid #c0392b;color:#e74c3c;border-radius:10px;font-size:13px;letter-spacing:2px;cursor:pointer;position:relative;overflow:hidden">
+      <button id="reset-all-btn" style="width:100%;padding:14px;background:rgba(192,57,43,0.15);border:2px solid #c0392b;color:#e74c3c;border-radius:10px;font-size:16px;letter-spacing:2px;cursor:pointer;position:relative;overflow:hidden">
         <span id="reset-all-label">🗑️ 長押しで全削除</span>
         <div id="reset-all-progress" style="position:absolute;left:0;top:0;bottom:0;width:0%;background:rgba(192,57,43,0.35);transition:none"></div>
       </button>
@@ -523,7 +530,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
 <!-- BOTTOM CART (mobile) -->
 <div id="cart-panel" class="collapsed">
   <div id="cart-toggle" onclick="toggleCart()">
-    <div style="display:flex;align-items:center;gap:10px"><span style="font-size:18px">🛒</span><span class="cart-label" id="cart-count-label">カートは空です</span></div>
+    <div style="display:flex;align-items:center;gap:10px"><span style="font-size:22px">🛒</span><span class="cart-label" id="cart-count-label">カートは空です</span></div>
     <div style="display:flex;align-items:center;gap:12px"><span class="cart-total-big" id="cart-total-disp">¥0</span><span class="cart-open-pill" id="cart-pill">会計へ ▲</span></div>
   </div>
   <div id="cart-body"></div>
@@ -532,10 +539,10 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
     <div class="pay-row"><div class="pay-disp dim" id="pay-disp-main">¥0</div></div>
     <input type="hidden" id="pay-main">
     <div class="change-row" id="cr-main"><span class="change-label">お釣り</span><span class="change-amount" id="cd-main">—</span></div>
-    <div class="keypad"><button class="key" onclick="keyPay('7')">7</button><button class="key" onclick="keyPay('8')">8</button><button class="key" onclick="keyPay('9')">9</button><button class="pay-preset" onclick="setPayment(1000)">¥1,000</button><button class="key" onclick="keyPay('4')">4</button><button class="key" onclick="keyPay('5')">5</button><button class="key" onclick="keyPay('6')">6</button><button class="pay-preset" onclick="setPayment(5000)">¥5,000</button><button class="key" onclick="keyPay('1')">1</button><button class="key" onclick="keyPay('2')">2</button><button class="key" onclick="keyPay('3')">3</button><button class="pay-preset" onclick="setPayment(10000)">¥10,000</button><button class="key" onclick="keyPay('0')">0</button><button class="key" onclick="keyPay('00')">00</button><button class="key" onclick="keyPay('B')">⌫</button><button class="key clear-key" onclick="keyPay('C')">C</button></div>
+        <div class="quick"><button class="pay-preset" onclick="setPayment(1000)">¥1,000</button><button class="pay-preset" onclick="setPayment(5000)">¥5,000</button><button class="pay-preset" onclick="setPayment(10000)">¥10,000</button><button class="key clear-key" onclick="keyPay('C')">C</button></div>
+    <div class="keypad"><button class="key" onclick="keyPay('7')">7</button><button class="key" onclick="keyPay('8')">8</button><button class="key" onclick="keyPay('9')">9</button><button class="key" onclick="keyPay('4')">4</button><button class="key" onclick="keyPay('5')">5</button><button class="key" onclick="keyPay('6')">6</button><button class="key" onclick="keyPay('1')">1</button><button class="key" onclick="keyPay('2')">2</button><button class="key" onclick="keyPay('3')">3</button><button class="key" onclick="keyPay('0')">0</button><button class="key" onclick="keyPay('00')">00</button><button class="key" onclick="keyPay('B')">⌫</button></div>
     <button class="checkout-btn" id="co-main" onclick="checkout()" disabled>会　計</button>
-    <button class="print-btn" id="print-main" onclick="printReceipt()" style="display:none">🖨️ レシート印刷</button>
-    <button class="clear-btn" id="clear-btn" style="display:none" onclick="clearCart()">カートをクリア</button>
+    <div class="sub-btns"><button class="print-btn" id="print-main" onclick="printReceipt()" style="display:none">🖨️ 印刷</button><button class="clear-btn" id="clear-btn" style="display:none" onclick="clearCart()">✕ クリア</button></div>
   </div>
 </div>
 </div><!-- #app -->
@@ -615,7 +622,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
 <div class="modal-overlay" id="hist-modal">
   <div class="modal">
     <div class="modal-title">📈 価格変更履歴</div>
-    <div id="hist-product-name" style="font-size:14px;color:var(--gold2);margin-bottom:14px"></div>
+    <div id="hist-product-name" style="font-size:17px;color:var(--gold2);margin-bottom:14px"></div>
     <div id="hist-list"></div>
     <div class="modal-btns" style="margin-top:16px"><button class="btn-cancel" style="width:100%" onclick="closeModal('hist-modal')">閉じる</button></div>
   </div>
@@ -769,7 +776,7 @@ function setCols(n,btn){
 function renderProducts(){
   const list=currentCat==='all'?products:products.filter(p=>(p.category||'other')===currentCat);
   const grid=document.getElementById('product-grid');
-  if(!list.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;color:var(--border);padding:40px 0;font-size:13px">この分類の商品はありません</div>';return}
+  if(!list.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;color:var(--border);padding:40px 0;font-size:16px">この分類の商品はありません</div>';return}
   grid.innerHTML='';
   list.forEach(p=>{
     const inCart=cart.find(c=>c.id===p.id);
@@ -809,7 +816,7 @@ function setCartOpen(open){
 function toggleCart(){setCartOpen(!cartOpen)}
 
 function cartItemsHtml(){
-  if(!cart.length)return'<div style="padding:16px;text-align:center;color:var(--border);font-size:13px">商品を選んでください</div>';
+  if(!cart.length)return'<div style="padding:16px;text-align:center;color:var(--border);font-size:16px">商品を選んでください</div>';
   return cart.map(item=>{
     const photo=getPhoto(item.id);
     const thumb=photo?`<img class="cart-thumb" src="${photo}">`:`<div class="cart-thumb-emoji">${item.emoji}</div>`;
@@ -1193,7 +1200,7 @@ async function openPriceHist(id){
     const all=await dbAll('priceHistory');
     const hist=all.filter(h=>h.productId===id).reverse();
     document.getElementById('hist-list').innerHTML=hist.length===0
-      ?'<div style="color:var(--border);font-size:13px;padding:12px 0;text-align:center">変更履歴はありません</div>'
+      ?'<div style="color:var(--border);font-size:16px;padding:12px 0;text-align:center">変更履歴はありません</div>'
       :hist.map(h=>`<div class="price-hist-item"><div><span class="price-hist-old">${yen(h.oldPrice)}</span><span style="color:var(--muted);margin:0 6px">→</span><span class="price-hist-new">${yen(h.newPrice)}</span></div><div class="price-hist-date">${h.date}</div></div>`).join('');
     document.getElementById('hist-modal').classList.add('open');
   }catch(e){flash('❌ 履歴取得エラー: '+e.message)}
@@ -1227,12 +1234,12 @@ function renderSales(){
   ].map(c=>`<div class="summary-card"><div class="sc-icon">${c.icon}</div><div class="sc-val">${c.val}</div><div class="sc-label">${c.label}</div></div>`).join('');
   renderGraph(filtered);renderRanking(filtered);
   document.getElementById('sales-list').innerHTML=filtered.length===0
-    ?'<div style="text-align:center;color:var(--border);padding:40px 0;font-size:13px">該当する売上記録はありません</div>'
-    :filtered.map(r=>`<div class="sale-card"><div class="sale-header"><span class="sale-date">🕐 ${r.date}</span><span class="sale-total">${yen(r.total)}</span><button onclick="deleteSale('${r.id}')" style="background:transparent;border:1px solid #c0392b;color:#c0392b;border-radius:6px;font-size:11px;padding:3px 8px;cursor:pointer;margin-left:6px">取消</button></div><div class="sale-items">${r.items.map(i=>{const photo=getPhoto(i.id);return photo?`<img class="sale-item-img" src="${photo}" title="${i.name}×${i.qty}">`:`<span class="sale-tag">${i.emoji} ${i.name}×${i.qty}</span>`}).join('')}</div><div class="sale-pay">預 ${yen(r.payment)} ／ お釣り ${yen(r.change)}</div></div>`).join('');
+    ?'<div style="text-align:center;color:var(--border);padding:40px 0;font-size:16px">該当する売上記録はありません</div>'
+    :filtered.map(r=>`<div class="sale-card"><div class="sale-header"><span class="sale-date">🕐 ${r.date}</span><span class="sale-total">${yen(r.total)}</span><button onclick="deleteSale('${r.id}')" style="background:transparent;border:1px solid #c0392b;color:#c0392b;border-radius:6px;font-size:13px;padding:3px 8px;cursor:pointer;margin-left:6px">取消</button></div><div class="sale-items">${r.items.map(i=>{const photo=getPhoto(i.id);return photo?`<img class="sale-item-img" src="${photo}" title="${i.name}×${i.qty}">`:`<span class="sale-tag">${i.emoji} ${i.name}×${i.qty}</span>`}).join('')}</div><div class="sale-pay">預 ${yen(r.payment)} ／ お釣り ${yen(r.change)}</div></div>`).join('');
 }
 function renderGraph(filtered){
   const chart=document.getElementById('bar-chart');
-  if(!filtered.length){chart.innerHTML='<div style="color:var(--border);font-size:12px;margin:auto;padding:20px">データなし</div>';return}
+  if(!filtered.length){chart.innerHTML='<div style="color:var(--border);font-size:14px;margin:auto;padding:20px">データなし</div>';return}
   let buckets={};
   if(graphMode==='daily'){for(let i=13;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);buckets[d.toLocaleDateString('ja-JP',{month:'numeric',day:'numeric'})]=0}filtered.forEach(r=>{const k=new Date(r.id).toLocaleDateString('ja-JP',{month:'numeric',day:'numeric'});if(k in buckets)buckets[k]+=r.total})}
   else{for(let h=0;h<24;h++)buckets[h+'時']=0;filtered.forEach(r=>{buckets[new Date(r.id).getHours()+'時']+=r.total})}
@@ -1245,7 +1252,7 @@ function renderRanking(filtered){
   const ranked=Object.values(map).sort((a,b)=>b.revenue-a.revenue).slice(0,8);
   const maxRev=ranked[0]?.revenue||1;
   document.getElementById('ranking-list').innerHTML=ranked.length===0
-    ?'<div style="color:var(--border);font-size:12px;padding:12px 0;text-align:center">データなし</div>'
+    ?'<div style="color:var(--border);font-size:14px;padding:12px 0;text-align:center">データなし</div>'
     :ranked.map((p,i)=>{const photo=getPhoto(p.id);const thumb=photo?`<img class="rank-img" src="${photo}">`:`<div class="rank-emoji">${p.emoji}</div>`;const medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':i+1;return`<div class="rank-item"><div class="rank-num${i<3?' r'+(i+1):''}">${medal}</div>${thumb}<div class="rank-info"><div class="rank-name">${p.name}</div><div class="rank-sub">${p.qty}個販売</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:${Math.round(p.revenue/maxRev*100)}%"></div></div></div><div class="rank-amount">${yen(p.revenue)}</div></div>`}).join('');
 }
 
