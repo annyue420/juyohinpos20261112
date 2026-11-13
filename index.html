@@ -80,22 +80,29 @@ button,input,select{font-family:inherit}
 #register-layout{display:flex}
 #product-side{flex:1 1 0;min-width:0;overflow-y:auto;padding-bottom:200px}
 #cart-side{display:none;width:320px;flex-shrink:0;border-left:1px solid var(--border);background:rgba(0,0,0,0.35);flex-direction:column;height:calc(100dvh - 115px);position:sticky;top:115px}
-#cart-side-header{padding:14px 16px 10px;border-bottom:1px solid var(--border2);flex-shrink:0}
+#cart-side-header{padding:12px 14px 0;flex-shrink:0}
 #cart-side-header h3{font-size:17px;color:var(--gold2);letter-spacing:3px}
-#cart-side-total{font-size:26px;font-weight:700;color:var(--gold);margin-top:4px}
+.total-box{color:var(--text)}
 #cart-side-body{flex:1;overflow-y:auto;padding:0 14px}
 #cart-items-col{flex:1;min-height:0;min-width:0;display:flex;flex-direction:column}
 #cart-items-header{padding:14px 16px 10px;border-bottom:1px solid var(--border2);flex-shrink:0;display:flex;align-items:baseline;justify-content:space-between;gap:8px}
-#cart-items-header h3{font-size:17px;color:var(--gold2);letter-spacing:3px}
-#cart-items-count{font-size:17px;color:var(--gold);font-weight:700}
+#cart-items-header h3{font-size:15px;color:var(--gold2);letter-spacing:0}
+#cart-items-header{flex-wrap:wrap;row-gap:6px}
+.items-clear{margin-left:auto;padding:5px 10px;border:1px solid var(--red2);background:transparent;color:var(--red2);border-radius:8px;font-size:13px;white-space:nowrap;cursor:pointer;touch-action:manipulation}
+.cart-total-lbl{font-size:14px;color:var(--muted);letter-spacing:1px}
+#cart-items-count{font-size:15px;color:var(--gold);font-weight:700}
 #cart-pay-col{flex-shrink:0;min-width:0;display:flex;flex-direction:column}
 #cart-side-footer{padding:12px 14px 20px;flex-shrink:0;border-top:1px solid var(--border2)}
 @media(min-width:768px) and (orientation:landscape) and (min-height:420px){
   #cart-side{width:auto;flex:1 1 0;min-width:460px;flex-direction:row}
   #cart-items-col{flex:1 1 0;min-width:200px;border-right:1px solid var(--border2)}
   #cart-pay-col{flex:1 1 0;min-width:260px;overflow-y:auto}
-  #cart-side-header{display:flex;align-items:baseline;justify-content:space-between;padding:10px 14px 8px}
-  #cart-side-total{margin-top:0}
+  #cart-side-header{padding:10px 14px 0}
+  #cart-items-header{padding:10px 12px 8px}
+  .pay-label{display:none}
+  .pay-disp{display:flex;align-items:center;justify-content:space-between}
+  .pay-disp::before{content:'お預かり金額';font-size:13px;font-weight:400;color:var(--muted);letter-spacing:1px}
+  .total-box::before{content:'会計金額'}
   #cart-side-body{padding:0 12px}
   #cart-side-body .cart-item{display:grid;grid-template-columns:44px minmax(0,1fr) auto;grid-template-areas:"thumb info rm" "thumb qty sub";gap:4px 8px;align-items:center;padding:10px 0}
   #cart-side-body .cart-item>:nth-child(1){grid-area:thumb;align-self:start}
@@ -319,14 +326,14 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
   .logo-sub{display:none}
   .tab-btn{padding:9px 4px}
   .cat-tab{padding:14px 18px;font-size:22px}
-  #cart-side-header{padding:6px 12px;display:flex;align-items:baseline;justify-content:space-between}
-  #cart-side-total{font-size:24px;margin-top:0}
+  #cart-side-header{padding:6px 10px 0}
   #cart-items-header{padding:6px 12px}
   #cart-side-footer{padding:6px 10px 8px}
   .pay-label{display:none}
   .pay-row{margin-bottom:4px}
   .pay-disp{display:flex;align-items:center;justify-content:space-between;font-size:26px;padding:2px 10px}
   .pay-disp::before{content:'お預かり金額';font-size:13px;font-weight:400;color:var(--muted);letter-spacing:1px}
+  .total-box::before{content:'会計金額'}
   .change-row{margin-bottom:4px}
   .change-label{font-size:14px}
   .change-amount{font-size:22px}
@@ -380,11 +387,11 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
     <div id="product-side"><div class="product-grid" id="product-grid"></div></div>
     <div id="cart-side">
       <div id="cart-items-col">
-        <div id="cart-items-header"><h3>🛒 購入商品</h3><span id="cart-items-count"></span></div>
+        <div id="cart-items-header"><h3>🛒 購入商品</h3><span id="cart-items-count"></span><button class="items-clear" id="items-clear" onclick="clearCart()" style="display:none">クリア</button></div>
         <div id="cart-side-body"></div>
       </div>
       <div id="cart-pay-col">
-      <div id="cart-side-header"><h3>🧾 会　計</h3><div id="cart-side-total">¥0</div></div>
+      <div id="cart-side-header"><div class="pay-label">会計金額</div><div id="cart-side-total" class="pay-disp total-box">¥0</div></div>
       <div id="cart-side-footer">
         <div class="pay-label">お預かり金額</div>
     <div class="pay-row"><div class="pay-disp dim" id="pay-disp-side">¥0</div></div>
@@ -393,7 +400,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
         <div class="quick"><button class="pay-preset" onclick="setPayment(1000)">¥1,000</button><button class="pay-preset" onclick="setPayment(5000)">¥5,000</button><button class="pay-preset" onclick="setPayment(10000)">¥10,000</button><button class="key clear-key" onclick="keyPay('C')">C</button></div>
     <div class="keypad"><button class="key" onclick="keyPay('7')">7</button><button class="key" onclick="keyPay('8')">8</button><button class="key" onclick="keyPay('9')">9</button><button class="key" onclick="keyPay('4')">4</button><button class="key" onclick="keyPay('5')">5</button><button class="key" onclick="keyPay('6')">6</button><button class="key" onclick="keyPay('1')">1</button><button class="key" onclick="keyPay('2')">2</button><button class="key" onclick="keyPay('3')">3</button><button class="key" onclick="keyPay('0')">0</button><button class="key" onclick="keyPay('00')">00</button><button class="key" onclick="keyPay('B')">⌫</button></div>
         <button class="checkout-btn" id="co-side" onclick="checkout()" disabled>会　計</button>
-        <div class="sub-btns"><button class="print-btn" id="print-side" onclick="printReceipt()" style="display:none">🖨️ 印刷</button><button class="clear-btn" onclick="clearCart()">✕ クリア</button></div>
+        <div class="sub-btns"><button class="print-btn" id="print-side" onclick="printReceipt()" style="display:none">🖨️ 印刷</button></div>
       </div>
       </div>
     </div>
@@ -531,7 +538,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
 <div id="cart-panel" class="collapsed">
   <div id="cart-toggle" onclick="toggleCart()">
     <div style="display:flex;align-items:center;gap:10px"><span style="font-size:22px">🛒</span><span class="cart-label" id="cart-count-label">カートは空です</span></div>
-    <div style="display:flex;align-items:center;gap:12px"><span class="cart-total-big" id="cart-total-disp">¥0</span><span class="cart-open-pill" id="cart-pill">会計へ ▲</span></div>
+    <div style="display:flex;align-items:center;gap:12px"><span class="cart-total-lbl">会計金額</span><span class="cart-total-big" id="cart-total-disp">¥0</span><span class="cart-open-pill" id="cart-pill">会計へ ▲</span></div>
   </div>
   <div id="cart-body"></div>
   <div id="cart-footer">
@@ -836,6 +843,7 @@ function renderCart(){
   const sb=document.getElementById('cart-side-body');if(sb)sb.innerHTML=html;
   const st=document.getElementById('cart-side-total');if(st)st.textContent=yen(total);
   const cl=document.getElementById('clear-btn');if(cl)cl.style.display=cart.length?'block':'none';
+  const ic2=document.getElementById('items-clear');if(ic2)ic2.style.display=cart.length?'':'none';
   syncPay('main');syncPay('side');
 }
 function syncPay(w){

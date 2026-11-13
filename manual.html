@@ -182,12 +182,12 @@ th{background:var(--panel);color:var(--gold);font-weight:700;white-space:nowrap}
   <li>商品の写真をタップすると、カートに入ります。同じ商品をタップすると、1つずつ増えます。</li>
   <li><b>スマホ：</b>画面下のバーに点数と合計が出ます。右の <span class="btn">会計へ ▲</span> を押すと、会計画面が開きます。<br>
       <b>iPad・タブレット（横向き）：</b>画面の左半分に商品、右半分の左側に購入商品の一覧、右側に会計画面が、いつも出ています。縦向きでは、右側に購入商品と会計画面が上下に並びます。</li>
-  <li>「お預かり金額」を、テンキーで入力します。右の列の <span class="btn">¥1,000</span> <span class="btn">¥5,000</span> <span class="btn">¥10,000</span> を押すと、その金額が一度で入ります。<span class="btn">⌫</span> は1文字消し、<span class="btn">C</span> は全部消します。</li>
+  <li>会計画面に、合計の「会計金額」と、「お預かり金額」が並んで表示されます。「お預かり金額」を、テンキーで入力します。テンキーの上にある <span class="btn">¥1,000</span> <span class="btn">¥5,000</span> <span class="btn">¥10,000</span> を押すと、その金額が一度で入ります。<span class="btn">C</span> は全部消し、テンキーの <span class="btn">⌫</span> は1文字だけ消します。</li>
   <li>お釣りが表示されます。金額が足りていれば、<span class="btn">会　計</span> ボタンが押せます。</li>
   <li>会計が終わるとレシートが出ます。必要なら <span class="btn">印刷</span> を押します。</li>
 </ol>
 <div class="note"><b>間違えて会計したとき</b>レシート画面の「この会計を取り消す」を押すと、売上から消えて、在庫が元に戻ります。レシートを閉じたあとは、「売上」タブの履歴にある「取消」から同じ操作ができます。</div>
-<p>カートの中の数量は、会計画面の <span class="btn">−</span> <span class="btn">＋</span> で変えられます。<span class="btn">✕</span> で1品を削除できます。</p>
+<p>カートの中の数量は、<span class="btn">−</span> <span class="btn">＋</span> で変えられます。<span class="btn">✕</span> で1品を削除できます。カートを空にするときは、タブレットでは「購入商品」の横の <span class="btn">クリア</span>、スマホでは会計画面の一番下の <span class="btn">✕ クリア</span> を押します。</p>
 
 <h3>在庫</h3>
 <ul>
@@ -212,6 +212,8 @@ th{background:var(--panel);color:var(--gold);font-weight:700;white-space:nowrap}
 <h3>設定</h3>
 <ul>
   <li><b>レジ画面の列数：</b>商品を横に何個並べるか（2〜6列）を選べます。スマホは2〜3列、iPadは4〜6列がおすすめです。</li>
+  <li><b>レシートの設定：</b>社名と連絡先（住所・電話番号など）を入力すると、会計後のレシートと印刷のいちばん上に表示されます。入力は自動で保存されます。社名が空のときは「御守」と表示されます。</li>
+  <li><b>印刷の設定：</b>用紙サイズ（レシートロール58mm・80mm、A6・A5・A4）を選べます。「テスト印刷」で、見た目と用紙を確認できます。Windows・AndroidのChrome / Edgeでは、選んだ用紙サイズで印刷されます。iPhone・iPadでは、印刷の画面でプリンターと用紙を選びます。</li>
   <li><b>全画面：</b>Android・Windows・iPadでは、ボタンで全画面にできます。iPhoneとiPadは、ホーム画面のアイコンから開くのが確実です。</li>
   <li><b>バックアップ・CSV：</b>次の章で説明します。</li>
 </ul>
@@ -225,7 +227,7 @@ th{background:var(--panel);color:var(--gold);font-weight:700;white-space:nowrap}
   <li>確認画面で「OK」を押します。</li>
   <li>共有画面が出たら、iPhone・iPadは「<b>ファイルに保存</b>」を選びます。保存場所（iCloud Driveなど）を選んで「保存」を押します。</li>
 </ol>
-<p>保存されるのは <code>御守POS_バックアップ_日付.json</code> というファイルです。商品、写真、在庫数、売上履歴、価格の変更履歴、並び順、列数が入っています。</p>
+<p>保存されるのは <code>御守POS_バックアップ_日付.json</code> というファイルです。商品、写真、在庫数、売上履歴、価格の変更履歴、並び順、列数、レシートの社名・連絡先・用紙の設定が入っています。</p>
 
 <h3>別の端末へ移す・元に戻す</h3>
 <ol class="steps">
