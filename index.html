@@ -102,7 +102,7 @@ button,input,select{font-family:inherit}
   .pay-label{display:none}
   .pay-disp{display:flex;align-items:center;justify-content:space-between}
   .pay-disp::before{content:'お預かり金額';font-size:13px;font-weight:400;color:var(--muted);letter-spacing:1px}
-  .total-box::before{content:'会計金額'}
+  .total-box::before{content:'合計金額'}
   #cart-side-body{padding:0 12px}
   #cart-side-body .cart-item{display:grid;grid-template-columns:44px minmax(0,1fr) auto;grid-template-areas:"thumb info rm" "thumb qty sub";gap:4px 8px;align-items:center;padding:10px 0}
   #cart-side-body .cart-item>:nth-child(1){grid-area:thumb;align-self:start}
@@ -333,7 +333,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
   .pay-row{margin-bottom:4px}
   .pay-disp{display:flex;align-items:center;justify-content:space-between;font-size:26px;padding:2px 10px}
   .pay-disp::before{content:'お預かり金額';font-size:13px;font-weight:400;color:var(--muted);letter-spacing:1px}
-  .total-box::before{content:'会計金額'}
+  .total-box::before{content:'合計金額'}
   .change-row{margin-bottom:4px}
   .change-label{font-size:14px}
   .change-amount{font-size:22px}
@@ -387,11 +387,11 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
     <div id="product-side"><div class="product-grid" id="product-grid"></div></div>
     <div id="cart-side">
       <div id="cart-items-col">
-        <div id="cart-items-header"><h3>🛒 購入商品</h3><span id="cart-items-count"></span><button class="items-clear" id="items-clear" onclick="clearCart()" style="display:none">クリア</button></div>
+        <div id="cart-items-header"><h3>🛒 選択商品</h3><span id="cart-items-count"></span><button class="items-clear" id="items-clear" onclick="clearCart()" style="display:none">クリア</button></div>
         <div id="cart-side-body"></div>
       </div>
       <div id="cart-pay-col">
-      <div id="cart-side-header"><div class="pay-label">会計金額</div><div id="cart-side-total" class="pay-disp total-box">¥0</div></div>
+      <div id="cart-side-header"><div class="pay-label">合計金額</div><div id="cart-side-total" class="pay-disp total-box">¥0</div></div>
       <div id="cart-side-footer">
         <div class="pay-label">お預かり金額</div>
     <div class="pay-row"><div class="pay-disp dim" id="pay-disp-side">¥0</div></div>
@@ -400,7 +400,6 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
         <div class="quick"><button class="pay-preset" onclick="setPayment(1000)">¥1,000</button><button class="pay-preset" onclick="setPayment(5000)">¥5,000</button><button class="pay-preset" onclick="setPayment(10000)">¥10,000</button><button class="key clear-key" onclick="keyPay('C')">C</button></div>
     <div class="keypad"><button class="key" onclick="keyPay('7')">7</button><button class="key" onclick="keyPay('8')">8</button><button class="key" onclick="keyPay('9')">9</button><button class="key" onclick="keyPay('4')">4</button><button class="key" onclick="keyPay('5')">5</button><button class="key" onclick="keyPay('6')">6</button><button class="key" onclick="keyPay('1')">1</button><button class="key" onclick="keyPay('2')">2</button><button class="key" onclick="keyPay('3')">3</button><button class="key" onclick="keyPay('0')">0</button><button class="key" onclick="keyPay('00')">00</button><button class="key" onclick="keyPay('B')">⌫</button></div>
         <button class="checkout-btn" id="co-side" onclick="checkout()" disabled>会　計</button>
-        <div class="sub-btns"><button class="print-btn" id="print-side" onclick="printReceipt()" style="display:none">🖨️ 印刷</button></div>
       </div>
       </div>
     </div>
@@ -487,6 +486,11 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
     </div>
     <div class="tool-note">操作方法、ホーム画面への追加、バックアップのしかたを説明しています</div>
   </div>
+  <div class="tool-panel">
+    <div class="tool-panel-title">ℹ️ バージョン情報</div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:17px"><span>御守POS</span><b id="app-version" style="font-size:22px;color:var(--gold)"></b></div>
+    <div class="tool-note">アプリを更新したあと、この番号が上がっていれば、新しい版になっています</div>
+  </div>
 </div>
 
 <!-- SALES -->
@@ -538,7 +542,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
 <div id="cart-panel" class="collapsed">
   <div id="cart-toggle" onclick="toggleCart()">
     <div style="display:flex;align-items:center;gap:10px"><span style="font-size:22px">🛒</span><span class="cart-label" id="cart-count-label">カートは空です</span></div>
-    <div style="display:flex;align-items:center;gap:12px"><span class="cart-total-lbl">会計金額</span><span class="cart-total-big" id="cart-total-disp">¥0</span><span class="cart-open-pill" id="cart-pill">会計へ ▲</span></div>
+    <div style="display:flex;align-items:center;gap:12px"><span class="cart-total-lbl">合計金額</span><span class="cart-total-big" id="cart-total-disp">¥0</span><span class="cart-open-pill" id="cart-pill">会計へ ▲</span></div>
   </div>
   <div id="cart-body"></div>
   <div id="cart-footer">
@@ -549,7 +553,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
         <div class="quick"><button class="pay-preset" onclick="setPayment(1000)">¥1,000</button><button class="pay-preset" onclick="setPayment(5000)">¥5,000</button><button class="pay-preset" onclick="setPayment(10000)">¥10,000</button><button class="key clear-key" onclick="keyPay('C')">C</button></div>
     <div class="keypad"><button class="key" onclick="keyPay('7')">7</button><button class="key" onclick="keyPay('8')">8</button><button class="key" onclick="keyPay('9')">9</button><button class="key" onclick="keyPay('4')">4</button><button class="key" onclick="keyPay('5')">5</button><button class="key" onclick="keyPay('6')">6</button><button class="key" onclick="keyPay('1')">1</button><button class="key" onclick="keyPay('2')">2</button><button class="key" onclick="keyPay('3')">3</button><button class="key" onclick="keyPay('0')">0</button><button class="key" onclick="keyPay('00')">00</button><button class="key" onclick="keyPay('B')">⌫</button></div>
     <button class="checkout-btn" id="co-main" onclick="checkout()" disabled>会　計</button>
-    <div class="sub-btns"><button class="print-btn" id="print-main" onclick="printReceipt()" style="display:none">🖨️ 印刷</button><button class="clear-btn" id="clear-btn" style="display:none" onclick="clearCart()">✕ クリア</button></div>
+    <div class="sub-btns"><button class="clear-btn" id="clear-btn" style="display:none" onclick="clearCart()">✕ クリア</button></div>
   </div>
 </div>
 </div><!-- #app -->
@@ -896,7 +900,6 @@ async function checkout(){
     cart=[];
     ['pay-main','pay-side'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''});
     document.querySelectorAll('.pay-preset').forEach(b=>b.classList.remove('on'));
-    ['print-main','print-side'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='block'});
     renderCart();renderProducts();flash('✅ 会計完了！');
   }catch(e){flash('❌ 会計エラー: '+e.message)}
 }
@@ -1495,6 +1498,10 @@ document.getElementById('backup-input').addEventListener('change',async function
   }catch(err){flash('❌ 復元に失敗しました: '+err.message)}
   this.value='';
 });
+
+// ══ バージョン（更新するたびに数字を上げます）══
+const APP_VERSION='1.0.0';
+{const ve=document.getElementById('app-version');if(ve)ve.textContent='Ver. '+APP_VERSION}
 
 // ══ 全画面表示 ══
 function isStandalone(){return window.navigator.standalone===true||(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)}
