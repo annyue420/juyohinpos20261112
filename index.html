@@ -37,10 +37,16 @@ button,input,select{font-family:inherit}
 .tab-btn{flex:1;padding:10px 4px;background:rgba(80,30,0,0.35);border:1px solid var(--border);border-radius:10px;color:var(--muted);font-size:17px;letter-spacing:1px;cursor:pointer;transition:all 0.2s;position:relative;white-space:nowrap}
 .tab-btn.active{color:var(--gold);border-color:var(--gold2);background:rgba(140,37,0,0.6)}
 #date-display{order:2;margin-left:auto;white-space:nowrap}
+.tab-btn.hdr-settings{flex:0 0 auto;padding:10px 14px;order:2}
+#sub-nav{display:none;gap:8px;padding:10px 14px;background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:var(--hdr-h,60px);z-index:99}
+.sub-btn{flex:1;padding:12px 6px;background:rgba(80,30,0,0.35);border:1px solid var(--border);border-radius:10px;color:var(--muted);font-size:19px;letter-spacing:1px;cursor:pointer;white-space:nowrap}
+.sub-btn.active{color:var(--gold);border-color:var(--gold2);background:rgba(140,37,0,0.6)}
 @media(min-width:768px){
   #header{flex-wrap:nowrap;padding:10px 16px;gap:16px}
   #tabs{order:0;flex:1;flex-basis:auto;max-width:640px;margin:0 auto}
   .tab-btn{padding:12px 6px;font-size:18px}
+  #tabs .tab-btn{flex:0 0 calc((100% - 18px)/4)}
+  .tab-btn.hdr-settings{order:0;padding:12px 16px}
   #date-display{order:0;margin-left:0}
 }
 .cart-badge{position:absolute;top:-6px;right:-4px;background:var(--red2);color:#fff;width:18px;height:18px;border-radius:50%;font-size:12px;font-weight:bold;display:flex;align-items:center;justify-content:center}
@@ -74,7 +80,7 @@ button,input,select{font-family:inherit}
 .stock-ok{color:var(--green);background:rgba(93,186,107,0.12)}
 .stock-low{color:#f39c12;background:rgba(243,156,18,0.15)}
 .stock-out{color:var(--red2);background:rgba(192,57,43,0.15)}
-.card-qty{position:absolute;top:7px;right:7px;width:22px;height:22px;border-radius:50%;font-size:13px;font-weight:bold;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.4)}
+.card-qty{position:absolute;top:6px;right:6px;min-width:32px;height:32px;padding:0 6px;box-sizing:border-box;border-radius:16px;font-size:20px;font-weight:bold;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.4)}
 
 /* SPLIT LAYOUT */
 #register-layout{display:flex}
@@ -82,7 +88,7 @@ button,input,select{font-family:inherit}
 #cart-side{display:none;width:320px;flex-shrink:0;border-left:1px solid var(--border);background:rgba(0,0,0,0.35);flex-direction:column;height:calc(100dvh - 115px);position:sticky;top:115px}
 #cart-side-header{padding:12px 14px 0;flex-shrink:0}
 #cart-side-header h3{font-size:17px;color:var(--gold2);letter-spacing:3px}
-.total-box{color:var(--text)}
+.total-box{color:var(--gold)}
 #cart-side-body{flex:1;overflow-y:auto;padding:0 14px}
 #cart-items-col{flex:1;min-height:0;min-width:0;display:flex;flex-direction:column}
 #cart-items-header{padding:14px 16px 10px;border-bottom:1px solid var(--border2);flex-shrink:0;display:flex;align-items:baseline;justify-content:space-between;gap:8px}
@@ -101,16 +107,9 @@ button,input,select{font-family:inherit}
   #cart-items-header{padding:10px 12px 8px}
   .pay-label{display:none}
   .pay-disp{display:flex;align-items:center;justify-content:space-between}
-  .pay-disp::before{content:'お預かり金額';font-size:13px;font-weight:400;color:var(--muted);letter-spacing:1px}
+  .pay-disp::before{content:'お預かり金額';font-size:15px;font-weight:400;color:var(--gold);letter-spacing:1px}
   .total-box::before{content:'合計金額'}
   #cart-side-body{padding:0 12px}
-  #cart-side-body .cart-item{display:grid;grid-template-columns:44px minmax(0,1fr) auto;grid-template-areas:"thumb info rm" "thumb qty sub";gap:4px 8px;align-items:center;padding:10px 0}
-  #cart-side-body .cart-item>:nth-child(1){grid-area:thumb;align-self:start}
-  #cart-side-body .cart-info{grid-area:info}
-  #cart-side-body .cart-name{white-space:normal;overflow:visible}
-  #cart-side-body .qty-ctrl{grid-area:qty}
-  #cart-side-body .cart-sub{grid-area:sub;min-width:0;text-align:right}
-  #cart-side-body .remove-btn{grid-area:rm;justify-self:end}
 }
 @media(min-width:768px) and (min-height:420px){
   #register-page.active{display:flex;flex-direction:column;height:calc(100vh - var(--top-h,115px));height:calc(100dvh - var(--top-h,115px))}
@@ -129,28 +128,29 @@ button,input,select{font-family:inherit}
 .cart-label{font-size:17px;color:var(--gold2);letter-spacing:1px}
 .cart-total-big{font-size:24px;font-weight:700;color:var(--gold)}
 .cart-open-pill{padding:8px 14px;border-radius:20px;background:var(--red);color:#fff;font-size:16px;font-weight:700;letter-spacing:1px}
-#cart-body{overflow-y:auto;flex:1;min-height:80px;padding:0 16px}
-.cart-item{display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--border2)}
+#cart-body{overflow-y:auto;flex:1;min-height:110px;padding:0 16px}
+#cart-body .cart-item{padding:8px 0;gap:6px 10px}
+.cart-item{display:grid;grid-template-columns:42px minmax(0,1fr) auto;grid-template-areas:"thumb info rm" "thumb qty qty";gap:12px 10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border2)}
+.cart-item>:nth-child(1){grid-area:thumb;align-self:start}
 .cart-thumb{width:42px;height:42px;border-radius:8px;object-fit:cover;background:#2d1200;flex-shrink:0}
 .cart-thumb-emoji{width:42px;height:42px;border-radius:8px;background:#2d1200;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.cart-info{flex:1;min-width:0}
-.cart-name{font-size:16px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cart-unit{font-size:13px;color:var(--muted);margin-top:2px}
-.qty-ctrl{display:flex;align-items:center;gap:5px;flex-shrink:0}
-.qty-btn{width:27px;height:27px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.qty-num{font-size:17px;min-width:18px;text-align:center}
-.cart-sub{font-size:16px;color:var(--gold);min-width:54px;text-align:right;flex-shrink:0}
-.remove-btn{background:transparent;border:none;color:var(--red2);font-size:20px;cursor:pointer;padding:4px;flex-shrink:0}
+.cart-info{grid-area:info;min-width:0}
+.cart-name{font-size:19px;color:var(--text);white-space:normal;line-height:1.35}
+.qty-ctrl{grid-area:qty;display:flex;align-items:center;justify-content:space-between;gap:6px;max-width:210px}
+.qty-btn{flex-shrink:0;width:48px;height:48px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text);font-size:28px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.qty-num{font-size:26px;font-weight:700;min-width:30px;text-align:center}
+.remove-btn{grid-area:rm;justify-self:end;align-self:start;background:transparent;border:none;color:var(--red2);font-size:20px;cursor:pointer;padding:4px;flex-shrink:0}
 #cart-footer{padding:12px 16px 28px;flex-shrink:0}
-.pay-label{font-size:14px;color:var(--gold2);letter-spacing:2px;margin-bottom:4px}
+.pay-label{font-size:15px;color:var(--gold);letter-spacing:2px;margin-bottom:4px}
 .pay-row{display:flex;gap:6px;margin-bottom:6px}
-.pay-disp{flex:1;padding:6px 14px;background:rgba(80,30,0,0.35);border:1px solid var(--border);border-radius:10px;font-size:31px;font-weight:700;color:var(--gold);text-align:right}
-.pay-disp.dim{color:var(--border)}
-.key.clear-key{color:var(--red2);border-color:var(--red2);font-weight:700;font-size:24px}
+.pay-disp{flex:1;padding:12px 14px;background:rgba(80,30,0,0.35);border:1px solid var(--border);border-radius:10px;font-size:31px;font-weight:700;color:var(--gold);text-align:right}
+.pay-disp.dim{color:var(--gold)}
+.key.clear-key{color:var(--red2);border-color:var(--red2);font-weight:700;font-size:30px}
 .quick{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:6px}
 .keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px}
 .key,.pay-preset{height:clamp(38px,6vh,52px);border-radius:10px;border:1px solid var(--border);background:rgba(80,30,0,0.35);color:var(--text);font-size:24px;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none}
 .key:active{background:var(--red)}
+.key{font-size:30px}
 .pay-preset{font-size:19px;color:var(--gold)}
 .pay-preset.on{background:var(--red);border-color:var(--red2);color:#fff}
 .change-row{display:flex;justify-content:space-between;align-items:center;padding:2px 0;margin-bottom:6px}
@@ -328,23 +328,27 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
   .cat-tab{padding:14px 18px;font-size:22px}
   #cart-side-header{padding:6px 10px 0}
   #cart-items-header{padding:6px 12px}
-  #cart-side-footer{padding:6px 10px 8px}
+  #cart-side-footer{padding:4px 10px 5px}
   .pay-label{display:none}
   .pay-row{margin-bottom:4px}
-  .pay-disp{display:flex;align-items:center;justify-content:space-between;font-size:26px;padding:2px 10px}
-  .pay-disp::before{content:'お預かり金額';font-size:13px;font-weight:400;color:var(--muted);letter-spacing:1px}
+  .pay-disp{display:flex;align-items:center;justify-content:space-between;font-size:28px;padding:6px 10px}
+  .pay-disp::before{content:'お預かり金額';font-size:15px;font-weight:400;color:var(--gold);letter-spacing:1px}
   .total-box::before{content:'合計金額'}
-  .change-row{margin-bottom:4px}
+  .change-row{margin-bottom:2px}
   .change-label{font-size:14px}
   .change-amount{font-size:22px}
   .quick{gap:4px;margin-bottom:4px}
   .keypad{gap:4px;margin-bottom:5px}
-  .key,.pay-preset{height:clamp(30px,6vh,40px);font-size:20px;border-radius:8px}
+  .key,.pay-preset{height:clamp(30px,6.2vh,44px);font-size:20px;border-radius:8px}
   .pay-preset{font-size:17px}
+  .key,.key.clear-key{font-size:27px}
   .checkout-btn{padding:9px;font-size:18px;letter-spacing:4px}
   .clear-btn,.print-btn{padding:5px;margin-top:4px;font-size:11px}
   #cart-side-body .cart-item{grid-template-columns:36px minmax(0,1fr) auto;padding:6px 0}
   .cart-thumb,.cart-thumb-emoji{width:36px;height:36px}
+  .cart-name{font-size:18px}
+  .qty-btn{width:44px;height:44px;font-size:26px}
+  .qty-num{font-size:24px}
 }
 
 /* font-scale:1.2 */
@@ -362,12 +366,15 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
 <div id="header">
   <div class="logo"><div class="logo-icon">⛩️</div><div><div class="logo-text">御守 POS</div><div class="logo-sub">OMAMORI SYSTEM</div></div></div>
   <div id="tabs">
-    <button class="tab-btn active" onclick="switchTab('register',this)">🛒 レジ<span class="cart-badge" id="cart-badge" style="display:none">0</span></button>
-    <button class="tab-btn" onclick="switchTab('inventory',this)">📦 在庫</button>
-    <button class="tab-btn" onclick="switchTab('sales',this)">📊 売上</button>
-    <button class="tab-btn" onclick="switchTab('settings',this)">⚙ 設定</button>
+    <button class="tab-btn active" id="tab-register" onclick="switchTab('register')">🛒 レジ<span class="cart-badge" id="cart-badge" style="display:none">0</span></button>
   </div>
   <div id="date-display" style="font-size:13px;color:var(--gold2);text-align:right"></div>
+  <button class="tab-btn hdr-settings" id="tab-settings" onclick="openSettings()">⚙ 設定</button>
+</div>
+<div id="sub-nav">
+  <button class="sub-btn" id="sub-inventory" onclick="switchTab('inventory')">📦 在庫</button>
+  <button class="sub-btn" id="sub-sales" onclick="switchTab('sales')">📊 売上</button>
+  <button class="sub-btn" id="sub-settings" onclick="switchTab('settings')">⚙ 各種設定</button>
 </div>
 
 <!-- REGISTER -->
@@ -380,6 +387,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
       <button class="cat-tab" onclick="setCat('hamaya',this)">🏹 破魔矢</button>
       <button class="cat-tab" onclick="setCat('ema',this)">🪧 絵馬</button>
       <button class="cat-tab" onclick="setCat('kumade',this)">🌾 熊手</button>
+      <button class="cat-tab" onclick="setCat('omikuji',this)">🔮 おみくじ</button>
       <button class="cat-tab" onclick="setCat('other',this)">その他</button>
     </div>
   </div>
@@ -588,7 +596,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
       <select class="form-input" id="edit-cat">
         <option value="ofuda">📜 お札</option><option value="omamori">🎋 御守</option>
         <option value="hamaya">🏹 破魔矢</option><option value="ema">🪧 絵馬</option>
-        <option value="kumade">🌾 熊手</option><option value="other">その他</option>
+        <option value="kumade">🌾 熊手</option><option value="omikuji">🔮 おみくじ</option><option value="other">その他</option>
       </select>
     </div>
     <div class="form-group"><label class="form-label">価格（円）</label><input class="form-input" type="number" id="edit-price"></div>
@@ -618,7 +626,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
       <select class="form-input" id="add-cat">
         <option value="ofuda">📜 お札</option><option value="omamori">🎋 御守</option>
         <option value="hamaya">🏹 破魔矢</option><option value="ema">🪧 絵馬</option>
-        <option value="kumade">🌾 熊手</option><option value="other">その他</option>
+        <option value="kumade">🌾 熊手</option><option value="omikuji">🔮 おみくじ</option><option value="other">その他</option>
       </select>
     </div>
     <div class="form-group"><label class="form-label">価格（円）*</label><input class="form-input" type="number" id="add-price"></div>
@@ -682,7 +690,7 @@ const dbDel=(s,k)=>new Promise((res,rej)=>{const r=txs(s,'readwrite').delete(k);
 
 // ══ State ══
 const COLORS=["#c0392b","#2980b9","#8e44ad","#27ae60","#f39c12","#e67e22","#7f8c8d","#e91e8c"];
-const CAT_LABELS={all:'すべて',ofuda:'お札',omamori:'御守',hamaya:'破魔矢',ema:'絵馬',kumade:'熊手',other:'その他'};
+const CAT_LABELS={all:'すべて',ofuda:'お札',omamori:'御守',hamaya:'破魔矢',ema:'絵馬',kumade:'熊手',omikuji:'おみくじ',other:'その他'};
 const DEFAULT_PRODUCTS=[
   {id:1,name:"縁結び守",price:800,stock:24,emoji:"🎋",color:"#c0392b",description:"良縁・恋愛成就",sold:6,category:"omamori"},
   {id:2,name:"交通安全守",price:600,stock:18,emoji:"🛡️",color:"#2980b9",description:"道中安全・事故除け",sold:12,category:"omamori"},
@@ -760,15 +768,21 @@ async function savePhoto(id,d){
 }
 
 // ══ Tabs / Cat / Cols ══
-function switchTab(tab,btn){
+let hubTab='settings';
+function switchTab(tab){
+  const isHub=(tab==='inventory'||tab==='sales'||tab==='settings');
+  if(isHub)hubTab=tab;
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById(tab+'-page').classList.add('active');
-  btn.classList.add('active');
+  document.getElementById('tab-register').classList.toggle('active',tab==='register');
+  document.getElementById('tab-settings').classList.toggle('active',isHub);
+  document.getElementById('sub-nav').style.display=isHub?'flex':'none';
+  ['inventory','sales','settings'].forEach(t=>document.getElementById('sub-'+t).classList.toggle('active',t===tab));
   document.getElementById('cart-panel').style.display=tab==='register'?'flex':'none';
   if(tab==='inventory') renderInventory();
   if(tab==='sales') renderSales();
 }
+function openSettings(){switchTab(hubTab)}
 function setCat(cat,btn){
   currentCat=cat;
   document.querySelectorAll('.cat-tab').forEach(b=>b.classList.remove('active'));
@@ -831,7 +845,7 @@ function cartItemsHtml(){
   return cart.map(item=>{
     const photo=getPhoto(item.id);
     const thumb=photo?`<img class="cart-thumb" src="${photo}">`:`<div class="cart-thumb-emoji">${item.emoji}</div>`;
-    return `<div class="cart-item">${thumb}<div class="cart-info"><div class="cart-name">${item.name}</div><div class="cart-unit">${yen(item.price)} × ${item.qty}</div></div><div class="qty-ctrl"><button class="qty-btn" onclick="updateCartQty(${item.id},-1)">−</button><span class="qty-num">${item.qty}</span><button class="qty-btn" onclick="updateCartQty(${item.id},1)">＋</button></div><div class="cart-sub">${yen(item.price*item.qty)}</div><button class="remove-btn" onclick="removeFromCart(${item.id})">✕</button></div>`;
+    return `<div class="cart-item">${thumb}<div class="cart-info"><div class="cart-name">${item.name}</div></div><div class="qty-ctrl"><button class="qty-btn" onclick="updateCartQty(${item.id},-1)">−</button><span class="qty-num">${item.qty}</span><button class="qty-btn" onclick="updateCartQty(${item.id},1)">＋</button></div><button class="remove-btn" onclick="removeFromCart(${item.id})">✕</button></div>`;
   }).join('');
 }
 function renderCart(){
@@ -1500,7 +1514,7 @@ document.getElementById('backup-input').addEventListener('change',async function
 });
 
 // ══ バージョン（更新するたびに数字を上げます）══
-const APP_VERSION='1.0.0';
+const APP_VERSION='1.1.1';
 {const ve=document.getElementById('app-version');if(ve)ve.textContent='Ver. '+APP_VERSION}
 
 // ══ 全画面表示 ══
