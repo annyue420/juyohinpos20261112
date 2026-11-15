@@ -77,7 +77,7 @@ button,input,select{font-family:inherit}
 .product-name{font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px}
 .product-meta{display:flex;flex-wrap:wrap;align-items:center;gap:3px 4px}
 .product-price{font-size:18px;font-weight:700;color:var(--gold)}
-.product-stock{font-size:12px;padding:0;display:inline-block;white-space:nowrap;font-weight:700}
+.product-stock{font-size:12px;padding:0;display:inline-block;white-space:nowrap;font-weight:700;margin-left:auto}
 .stock-ok{color:var(--green)}
 .stock-low{color:#f39c12}
 .stock-out{color:var(--red2)}
@@ -157,7 +157,7 @@ button,input,select{font-family:inherit}
 .pay-preset{font-size:19px;color:var(--gold)}
 .pay-preset.on{background:var(--red);border-color:var(--red2);color:#fff}
 .change-row{display:flex;justify-content:space-between;align-items:center;padding:2px 0;margin-bottom:6px}
-.change-label{font-size:17px;color:var(--gold2)}
+.change-label{font-size:17px;color:var(--gold)}
 .change-amount{font-size:26px;font-weight:700}
 .ok{color:var(--green)}.ng{color:var(--red2)}
 .checkout-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border:none;border-radius:12px;font-size:20px;font-weight:700;letter-spacing:5px;cursor:pointer}
@@ -291,7 +291,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
 .rec-item-name{flex:1}
 .rec-item span:last-child{white-space:nowrap;font-weight:700}
 .rec-total{display:flex;justify-content:space-between;font-size:30px;font-weight:bold;margin-bottom:8px}
-.rec-pay{display:flex;justify-content:space-between;font-size:22px;color:#5c3010;margin-bottom:8px}
+.rec-pay{display:flex;justify-content:space-between;font-size:30px;color:#5c3010;margin-bottom:8px}
 .rec-change{display:flex;justify-content:space-between;font-size:30px;font-weight:bold;color:#8b2500}
 .rec-footer{text-align:center;font-size:15px;color:#7c4a20;margin-top:6px}
 .rec-close{width:100%;margin-top:16px;padding:12px;background:#8b2500;color:#fff;border:none;border-radius:12px;font-size:16px;letter-spacing:2px;cursor:pointer}
@@ -1547,7 +1547,7 @@ document.getElementById('backup-input').addEventListener('change',async function
 });
 
 // ══ バージョン（更新するたびに数字を上げます）══
-const APP_VERSION='1.1.8';
+const APP_VERSION='1.1.11';
 {const ve=document.getElementById('app-version');if(ve)ve.textContent='Ver. '+APP_VERSION}
 
 // ══ 全画面表示 ══
