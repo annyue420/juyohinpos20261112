@@ -72,14 +72,15 @@ button,input,select{font-family:inherit}
 .product-card-no-img{width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,#1e0900,#2d1200);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
 .no-img-emoji{font-size:38px}.no-img-text{font-size:12px;color:var(--border)}
 .product-card-accent{height:3px}
-.product-card-body{padding:9px 9px 11px}
-.product-name{font-size:16px;font-weight:700;color:var(--text);margin-bottom:2px}
-.product-desc{font-size:12px;color:var(--muted);margin-bottom:4px}
+.product-card-body{padding:9px 6px 11px}
+.product-no{font-size:13px;font-weight:700;color:var(--gold2);margin-bottom:1px}
+.product-name{font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px}
+.product-meta{display:flex;flex-wrap:wrap;align-items:center;gap:3px 4px}
 .product-price{font-size:18px;font-weight:700;color:var(--gold)}
-.product-stock{font-size:12px;padding:2px 7px;border-radius:20px;display:inline-block;margin-top:4px}
-.stock-ok{color:var(--green);background:rgba(93,186,107,0.12)}
-.stock-low{color:#f39c12;background:rgba(243,156,18,0.15)}
-.stock-out{color:var(--red2);background:rgba(192,57,43,0.15)}
+.product-stock{font-size:12px;padding:0;display:inline-block;white-space:nowrap;font-weight:700}
+.stock-ok{color:var(--green)}
+.stock-low{color:#f39c12}
+.stock-out{color:var(--red2)}
 .card-qty{position:absolute;top:6px;right:6px;min-width:32px;height:32px;padding:0 6px;box-sizing:border-box;border-radius:16px;font-size:20px;font-weight:bold;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.4)}
 
 /* SPLIT LAYOUT */
@@ -199,6 +200,7 @@ button,input,select{font-family:inherit}
 .photo-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s;font-size:22px}
 .inv-img-wrap:active .photo-overlay{opacity:1}
 .inv-content{flex:1;padding:11px 11px 9px;min-width:0}
+.inv-no{font-size:13px;font-weight:700;color:var(--gold2);margin-bottom:1px}
 .inv-name{font-size:17px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px}
 .price-hist-btn{font-size:12px;color:#7ec8e3;background:transparent;border:1px solid #2980b940;border-radius:4px;padding:2px 6px;cursor:pointer;flex-shrink:0}
 .inv-meta{font-size:13px;color:var(--muted);margin:2px 0 4px}
@@ -595,6 +597,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
         </div>
       </div>
     </div>
+    <div class="form-group"><label class="form-label">番号</label><input class="form-input" id="edit-no" inputmode="numeric" maxlength="6" placeholder="例：101（空欄なら表示なし）"></div>
     <div class="form-group"><label class="form-label">商品名</label><input class="form-input" id="edit-name"></div>
     <div class="form-group"><label class="form-label">カテゴリー</label>
       <select class="form-input" id="edit-cat">
@@ -625,6 +628,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
         </div>
       </div>
     </div>
+    <div class="form-group"><label class="form-label">番号</label><input class="form-input" id="add-no" inputmode="numeric" maxlength="6" placeholder="例：101（空欄なら表示なし）"></div>
     <div class="form-group"><label class="form-label">商品名 *</label><input class="form-input" id="add-name"></div>
     <div class="form-group"><label class="form-label">カテゴリー</label>
       <select class="form-input" id="add-cat">
@@ -814,7 +818,7 @@ function renderProducts(){
     const imgHtml=photo?`<img class="product-card-img" src="${photo}" alt="${p.name}">`:`<div class="product-card-no-img"><div class="no-img-emoji">${p.emoji}</div><div class="no-img-text">写真なし</div></div>`;
     const div=document.createElement('div');
     div.className='product-card'+(p.stock===0?' out':'');
-    div.innerHTML=`${inCart?`<div class="card-qty" style="background:${p.color}">${inCart.qty}</div>`:''}${imgHtml}<div class="product-card-accent" style="background:${p.color}"></div><div class="product-card-body"><div class="product-name">${p.name}</div><div class="product-desc">${p.description}</div><div class="product-price">${yen(p.price)}</div><div class="product-stock ${sc}">${p.stock===0?'在庫なし':'残'+p.stock+'個'}</div></div>`;
+    div.innerHTML=`${inCart?`<div class="card-qty" style="background:${p.color}">${inCart.qty}</div>`:''}${imgHtml}<div class="product-card-accent" style="background:${p.color}"></div><div class="product-card-body">${p.no?`<div class="product-no">No.${escHtml(p.no)}</div>`:''}<div class="product-name">${p.name}</div><div class="product-meta"><span class="product-price">${yen(p.price)}</span><span class="product-stock ${sc}">${p.stock===0?'在庫なし':'残'+p.stock+'個'}</span></div></div>`;
     if(p.stock>0) div.onclick=()=>addToCart(p.id);
     grid.appendChild(div);
   });
@@ -1043,7 +1047,7 @@ function renderInventory(){
       <div class="drag-handle">☰</div>
       <div class="inv-img-wrap" onclick="openEditModal(${p.id})">${imgHtml}<div class="photo-overlay">📷</div></div>
       <div class="inv-content">
-        <div class="inv-name">${p.name}<button class="price-hist-btn" onclick="openPriceHist(${p.id})">履歴</button></div>
+        ${p.no?`<div class="inv-no">No.${escHtml(p.no)}</div>`:''}<div class="inv-name">${p.name}<button class="price-hist-btn" onclick="openPriceHist(${p.id})">履歴</button></div>
         <div class="inv-meta">${CAT_LABELS[p.category||'other']} ／ ${p.description}</div>
         <div class="inv-price-row">${yen(p.price)}　販売: ${p.sold||0}個</div>
         <div class="inv-bottom">
@@ -1172,11 +1176,15 @@ async function deleteProduct(id){
     renderInventory();renderProducts();flash('🗑️ 削除しました');
   }catch(e){flash('❌ 削除エラー: '+e.message)}
 }
+// 商品番号：全角数字は半角にそろえ、前後の空白を除く／ほかの商品と重なっていれば、その商品名を返す
+const normNo=v=>String(v||'').trim().replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0));
+const dupNoOwner=(no,exceptId)=>no?products.find(x=>x.id!==exceptId&&(x.no||'')===no):null;
 function openEditModal(id){
   editingId=id;
   const p=products.find(x=>x.id===id);
   if(!p){flash('❌ 商品が見つかりません');return}
   pendingPhoto.edit=undefined;
+  document.getElementById('edit-no').value=p.no||'';
   document.getElementById('edit-name').value=p.name;
   document.getElementById('edit-cat').value=p.category||'omamori';
   document.getElementById('edit-price').value=p.price;
@@ -1200,6 +1208,9 @@ async function saveEdit(){
     if(p.price!==newPrice){
       await dbPut('priceHistory',{productId:editingId,productName:p.name,oldPrice:p.price,newPrice,date:new Date().toLocaleString('ja-JP')});
     }
+    const no=normNo(document.getElementById('edit-no').value);
+    const dup=dupNoOwner(no,editingId);
+    p.no=no;
     p.name=name;
     p.category=document.getElementById('edit-cat').value;
     p.price=newPrice;
@@ -1208,13 +1219,13 @@ async function saveEdit(){
     p.description=document.getElementById('edit-desc').value.trim();
     await dbPut('products',p);
     if(pendingPhoto.edit!==undefined) await savePhoto(editingId,pendingPhoto.edit);
-    closeModal('edit-modal');renderInventory();renderProducts();flash('✅ 更新しました');
+    closeModal('edit-modal');renderInventory();renderProducts();flash(dup?`✅ 更新しました（⚠ 番号${no}は「${dup.name}」とも重なっています）`:'✅ 更新しました');
   }catch(e){flash('❌ 更新エラー: '+e.message)}
 }
 function openAddModal(){
   pendingPhoto.add=undefined;
   document.getElementById('add-photo-box').innerHTML='📷';
-  ['add-name','add-price','add-stock','add-desc'].forEach(id=>document.getElementById(id).value='');
+  ['add-no','add-name','add-price','add-stock','add-desc'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('add-emoji').value='🎋';
   document.getElementById('add-modal').classList.add('open');
 }
@@ -1227,11 +1238,13 @@ async function addProduct(){
   }
   try{
     const id=Date.now();
-    const p={id,name,price,stock,category:document.getElementById('add-cat').value,color:COLORS[products.length%COLORS.length],emoji:document.getElementById('add-emoji').value||'🎋',description:document.getElementById('add-desc').value.trim(),sold:0};
+    const no=normNo(document.getElementById('add-no').value);
+    const dup=dupNoOwner(no,id);
+    const p={id,no,name,price,stock,category:document.getElementById('add-cat').value,color:COLORS[products.length%COLORS.length],emoji:document.getElementById('add-emoji').value||'🎋',description:document.getElementById('add-desc').value.trim(),sold:0};
     await dbPut('products',p);
     if(pendingPhoto.add) await savePhoto(id,pendingPhoto.add);
     products.push(p);
-    closeModal('add-modal');renderInventory();renderProducts();flash('✅ 追加しました');
+    closeModal('add-modal');renderInventory();renderProducts();flash(dup?`✅ 追加しました（⚠ 番号${no}は「${dup.name}」とも重なっています）`:'✅ 追加しました');
   }catch(e){flash('❌ 追加エラー: '+e.message)}
 }
 async function openPriceHist(id){
@@ -1418,8 +1431,8 @@ function dlCSV(filename,content){
   saveFileAs(blob,filename,'text/csv','CSV').then(saveResultMsg).catch(e=>flash('❌ 保存エラー: '+e.message));
 }
 function exportProductCSV(){
-  const rows=products.map(p=>[p.id,p.name,p.price,p.stock,CAT_LABELS[p.category||'other'],p.emoji,p.description,p.sold||0].map(esc).join(','));
-  dlCSV(`御守_在庫_${new Date().toLocaleDateString('ja-JP').replace(/\//g,'-')}.csv`,['ID,商品名,価格,在庫数,カテゴリー,絵文字,説明,販売数',...rows].join('\r\n'));
+  const rows=products.map(p=>[p.id,p.no||'',p.name,p.price,p.stock,CAT_LABELS[p.category||'other'],p.emoji,p.description,p.sold||0,p.vendor||''].map(esc).join(','));
+  dlCSV(`御守_在庫_${new Date().toLocaleDateString('ja-JP').replace(/\//g,'-')}.csv`,['ID,番号,商品名,価格,在庫数,カテゴリー,絵文字,説明,販売数,販売元',...rows].join('\r\n'));
   
 }
 function exportSalesCSV(){
@@ -1435,7 +1448,7 @@ document.getElementById('csv-input').addEventListener('change',async function(e)
   function parseRow(line){const res=[];let cur='',inQ=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'){if(inQ&&line[i+1]==='"'){cur+='"';i++}else inQ=!inQ}else if(c===','&&!inQ){res.push(cur);cur=''}else cur+=c}res.push(cur);return res}
   const headers=parseRow(lines[0]);
   const col=name=>headers.findIndex(h=>h.trim()===name);
-  const iID=col('ID'),iName=col('商品名'),iPrice=col('価格'),iStock=col('在庫数'),iEmoji=col('絵文字'),iDesc=col('説明'),iCat=col('カテゴリー');
+  const iID=col('ID'),iNo=col('番号'),iVendor=col('販売元'),iName=col('商品名'),iPrice=col('価格'),iStock=col('在庫数'),iEmoji=col('絵文字'),iDesc=col('説明'),iCat=col('カテゴリー');
   if(iName<0||iPrice<0||iStock<0){flash('❌ CSVの形式が正しくありません（必要な列：商品名, 価格, 在庫数）');this.value='';return}
   let updated=0,added=0;
   for(let i=1;i<lines.length;i++){
@@ -1446,17 +1459,21 @@ document.getElementById('csv-input').addEventListener('change',async function(e)
     const existing=!isNaN(csvId)?products.find(p=>p.id===csvId):null;
     if(existing){
       existing.name=name;existing.price=price;existing.stock=stock;
+      if(iNo>=0)existing.no=normNo(cols[iNo]);
+      if(iVendor>=0)existing.vendor=(cols[iVendor]||'').trim();
       if(iEmoji>=0&&cols[iEmoji]?.trim())existing.emoji=cols[iEmoji].trim();
       if(iDesc>=0)existing.description=cols[iDesc]?.trim()||existing.description;
       if(iCat>=0){const catVal=Object.entries(CAT_LABELS).find(([k,v])=>v===cols[iCat]?.trim());if(catVal)existing.category=catVal[0]}
       await dbPut('products',existing);updated++;
     }else{
       const newId=Date.now()+i;
-      const np={id:newId,name,price,stock,color:COLORS[products.length%COLORS.length],emoji:(iEmoji>=0&&cols[iEmoji]?.trim())||'🎋',description:iDesc>=0?(cols[iDesc]?.trim()||''):'',category:'other',sold:0};
+      const np={id:newId,no:iNo>=0?normNo(cols[iNo]):'',vendor:iVendor>=0?(cols[iVendor]||'').trim():'',name,price,stock,color:COLORS[products.length%COLORS.length],emoji:(iEmoji>=0&&cols[iEmoji]?.trim())||'🎋',description:iDesc>=0?(cols[iDesc]?.trim()||''):'',category:'other',sold:0};
       await dbPut('products',np);products.push(np);added++;
     }
   }
-  renderInventory();renderProducts();flash(`✅ 更新${updated}件 ／ 追加${added}件`);this.value='';
+  const cnt={};products.forEach(p=>{if(p.no)cnt[p.no]=(cnt[p.no]||0)+1});
+  const dups=Object.keys(cnt).filter(k=>cnt[k]>1);
+  renderInventory();renderProducts();flash(`✅ 更新${updated}件 ／ 追加${added}件`+(dups.length?`（⚠ 番号が重なっています：${dups.slice(0,3).join('、')}${dups.length>3?' ほか':''}）`:''));this.value='';
 });
 
 // ══ Backup ══
@@ -1530,7 +1547,7 @@ document.getElementById('backup-input').addEventListener('change',async function
 });
 
 // ══ バージョン（更新するたびに数字を上げます）══
-const APP_VERSION='1.1.3';
+const APP_VERSION='1.1.8';
 {const ve=document.getElementById('app-version');if(ve)ve.textContent='Ver. '+APP_VERSION}
 
 // ══ 全画面表示 ══
