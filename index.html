@@ -156,7 +156,7 @@ button,input,select{font-family:inherit}
 .key{font-size:30px}
 .pay-preset{font-size:19px;color:var(--gold)}
 .pay-preset.on{background:var(--red);border-color:var(--red2);color:#fff}
-.change-row{display:flex;justify-content:space-between;align-items:center;padding:2px 0;margin-bottom:6px}
+.change-row{display:flex;justify-content:space-between;align-items:center;padding:2px 15px 2px 0;margin-bottom:6px}
 .change-label{font-size:15px;color:var(--gold);letter-spacing:1px}
 .change-amount{font-size:31px;font-weight:700}
 .ok{color:var(--green)}.ng{color:var(--red2)}
@@ -338,7 +338,7 @@ textarea.form-input{resize:vertical;min-height:84px;line-height:1.5;font-family:
   .pay-disp{display:flex;align-items:center;justify-content:space-between;font-size:28px;padding:6px 10px}
   .pay-disp::before{content:'お預かり金額';font-size:15px;font-weight:400;color:var(--gold);letter-spacing:1px}
   .total-box::before{content:'合計金額'}
-  .change-row{margin-bottom:2px}
+  .change-row{margin-bottom:2px;padding-right:11px}
   .change-label{font-size:15px}
   .change-amount{font-size:28px}
   .quick{gap:4px;margin-bottom:4px}
@@ -1547,7 +1547,7 @@ document.getElementById('backup-input').addEventListener('change',async function
 });
 
 // ══ バージョン（更新するたびに数字を上げます）══
-const APP_VERSION='1.1.12';
+const APP_VERSION='1.1.13';
 {const ve=document.getElementById('app-version');if(ve)ve.textContent='Ver. '+APP_VERSION}
 
 // ══ 全画面表示 ══
